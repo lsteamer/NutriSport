@@ -13,9 +13,12 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import com.nutrisport.auth.component.GoogleButton
 import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.BebasNeueFont
 import com.nutrisport.shared.FontSize
+import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 import rememberMessageBarState
@@ -33,9 +36,14 @@ fun AuthScreen() {
                     bottom = padding.calculateBottomPadding()
                 ),
             messageBarState = messageBarState,
-            errorMaxLines = 2
+            errorMaxLines = 2,
+            contentBackgroundColor = Surface
         ){
-            Column (modifier = Modifier.fillMaxSize()) {
+            Column (
+                modifier = Modifier
+                .fillMaxSize()
+                .padding(all = 24.dp)
+            ) {
                 Column (
                     modifier = Modifier.weight(1f),
                     verticalArrangement = Arrangement.Center,
@@ -43,7 +51,7 @@ fun AuthScreen() {
                     ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "NUTRISPORT",
+                        text = "KMMShoppin",
                         textAlign = TextAlign.Center,
                         fontFamily = BebasNeueFont(),
                         fontSize = FontSize.EXTRA_LARGE,
@@ -60,7 +68,10 @@ fun AuthScreen() {
                     )
 
                 }
-
+                GoogleButton(
+                    loading = false,
+                    onClick = {}
+                )
             }
 
         }

@@ -1,6 +1,5 @@
 package com.nutrisport.auth.component
 
-import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
@@ -84,7 +83,8 @@ fun GoogleButton(
             ){
                 Icon(
                     painter = painterResource(icon),
-                    contentDescription = "Google Logo"
+                    contentDescription = "Google Logo",
+                    tint = Color.Unspecified
                 )
             }
 
