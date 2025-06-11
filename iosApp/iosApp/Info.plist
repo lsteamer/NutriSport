@@ -2,6 +2,21 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>GIDServerClientID</key>
+	<string>450378590026-9v4s42285j1fpqo2e3uv0nskltkk2f5i.apps.googleusercontent.com</string>
+	<key>GIDClientID</key>
+	<string>450378590026-1s15sjrklg0hbq8nion8u2vvmmkg6bq8.apps.googleusercontent.com</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.450378590026-1s15sjrklg0hbq8nion8u2vvmmkg6bq8</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string></string>
+		</dict>
+	</array>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 </dict>
