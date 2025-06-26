@@ -1,13 +1,14 @@
 package com.nutrisport.home.component
 
 import androidx.compose.animation.animateColorAsState
+import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -17,6 +18,7 @@ import androidx.compose.ui.unit.dp
 import com.nutrisport.home.domain.BottomBarDestination
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.IconSecondary
+import com.nutrisport.shared.SurfaceLighter
 import org.jetbrains.compose.resources.painterResource
 
 @Composable
@@ -29,8 +31,9 @@ fun BottomBar(
         modifier = modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(size = 12.dp))
+            .background(SurfaceLighter)
             .padding(
-                vertical = 24.dp,
+                vertical = 12.dp,
                 horizontal = 36.dp
             ),
         verticalAlignment = Alignment.CenterVertically,
@@ -40,13 +43,14 @@ fun BottomBar(
             val animatedTint by animateColorAsState(
                 targetValue = if(selected) IconSecondary else IconPrimary
             )
-            IconButton(onClick = {onSelect(destination)}) {
+            //IconButton(onClick = {onSelect(destination)}) {
                 Icon(
+                    modifier = Modifier.clickable {onSelect(destination)},
                     painter = painterResource(destination.icon),
                     contentDescription = "$destination.name Icon",
                     tint = animatedTint
                 )
-            }
+  //          }
         }
     }
 }
