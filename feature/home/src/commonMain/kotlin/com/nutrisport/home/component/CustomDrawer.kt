@@ -13,8 +13,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.nutrisport.home.domain.DrawerItem
 import com.nutrisport.shared.BebasNeueFont
+import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 
@@ -36,7 +36,7 @@ fun CustomDrawer(
         Spacer(modifier = Modifier.height(50.dp))
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = Strings.brand_name.uppercase(),
+            text = EnglishStrings.brandName.uppercase(),
             textAlign = TextAlign.Center,
             color = TextSecondary,
             fontFamily = BebasNeueFont(),
@@ -44,7 +44,7 @@ fun CustomDrawer(
         )
         Text(
             modifier = Modifier.fillMaxWidth(),
-            text = Strings.healty_lifestyle,
+            text = EnglishStrings.healthyLifestyle,
             textAlign = TextAlign.Center,
             color = TextPrimary,
             fontSize = FontSize.REGULAR

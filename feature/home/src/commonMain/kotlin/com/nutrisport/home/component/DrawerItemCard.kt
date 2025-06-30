@@ -15,9 +15,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.nutrisport.home.domain.DrawerItem
+import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.TextPrimary
 import org.jetbrains.compose.resources.painterResource
 
@@ -39,7 +39,7 @@ fun DrawerItemCard(
     ) {
         Icon(
             painter = painterResource(drawerItem.icon),
-            contentDescription = Strings.drawer_item_icon,
+            contentDescription = EnglishStrings.drawerItemIcon,
             tint = IconPrimary
         )
         Spacer(modifier = Modifier.width(12.dp))

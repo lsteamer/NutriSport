@@ -1,25 +1,50 @@
 package com.nutrisport.shared
 
-object Strings {
-    val app_name = "KMMShoppin"
+interface StringResources {
+    val appName: String
 
-    val brand_name = "NutriSport"
+    val brandName: String
 
-    val sign_in_to_continue = "Sign in to Continue"
-    val auth_success = "Authentication successful!"
-    val sign_in_google = "Sign in with Google"
-    val please_wait = "Please wait..."
+    val signInToContinue: String
+    val authSuccess: String
+    val signIntoGoogle: String
+    val pleaseWait: String
 
-    val error_unknown = "Unknown error"
-    val error_network = "Network error"
-    val error_internet = "Internet connection unavailable"
-    val error_idtoken = "ID token is null"
-    val error_signincanceled = "Sign in canceled"
+    val errorUnknown: String
+    val errorNetwork: String
+    val errorInternet: String
+    val errorIdToken: String
+    val errorSignInCancelled: String
 
-    val healty_lifestyle = "Healthy Lifestyle"
+    val healthyLifestyle: String
 
-    val drawer_item_icon = "Drawer item icon"
+    val drawerItemIcon: String
 
-    val menu_icon = "Menu Icon"
-    val google_logo = "Google Logo"
+    val menuIcon: String
+    val googleLogo: String
+
+}
+
+object EnglishStrings : StringResources {
+    override val appName = "KMMShoppin"
+
+    override val brandName = "NutriSport"
+
+    override val signInToContinue = "Sign in to Continue"
+    override val authSuccess = "Authentication successful!"
+    override val signIntoGoogle = "Sign in with Google"
+    override val pleaseWait = "Please wait..."
+
+    override val errorUnknown = "Unknown error"
+    override val errorNetwork = "Network error"
+    override val errorInternet = "Internet connection unavailable"
+    override val errorIdToken = "ID token is null"
+    override val errorSignInCancelled = "Sign in cancelled"
+
+    override val healthyLifestyle = "Healthy Lifestyle"
+
+    override val drawerItemIcon = "Drawer item icon"
+
+    override val menuIcon = "Menu Icon"
+    override val googleLogo = "Google Logo"
 }

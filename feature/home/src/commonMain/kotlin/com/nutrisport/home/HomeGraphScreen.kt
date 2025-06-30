@@ -30,10 +30,10 @@ import com.nutrisport.home.component.BottomBar
 import com.nutrisport.home.component.CustomDrawer
 import com.nutrisport.home.domain.BottomBarDestination
 import com.nutrisport.shared.BebasNeueFont
+import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.Resources
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
@@ -91,7 +91,7 @@ fun HomeGraphScreen() {
                         IconButton(onClick = {}) {
                             Icon(
                                 painter = painterResource(Resources.Icon.Menu),
-                                contentDescription = Strings.menu_icon,
+                                contentDescription = EnglishStrings.menuIcon,
                                 tint = IconPrimary
                             )
                         }

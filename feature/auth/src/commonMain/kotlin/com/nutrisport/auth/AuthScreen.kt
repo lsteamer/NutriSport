@@ -23,8 +23,8 @@ import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
 import com.nutrisport.auth.component.GoogleButton
 import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.BebasNeueFont
+import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceBrand
 import com.nutrisport.shared.SurfaceError
@@ -73,7 +73,7 @@ fun AuthScreen(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = Strings.app_name,
+                        text = EnglishStrings.appName,
                         textAlign = TextAlign.Center,
                         fontFamily = BebasNeueFont(),
                         fontSize = FontSize.EXTRA_LARGE,
@@ -83,7 +83,7 @@ fun AuthScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .alpha(Alpha.HALF),
-                        text = Strings.sign_in_to_continue,
+                        text = EnglishStrings.signInToContinue,
                         textAlign = TextAlign.Center,
                         fontSize = FontSize.EXTRA_REGULAR,
                         color = TextPrimary
@@ -98,7 +98,7 @@ fun AuthScreen(
                                 user = user,
                                 onSuccess = {
                                     scope.launch {
-                                        messageBarState.addSuccess(Strings.auth_success)
+                                        messageBarState.addSuccess(EnglishStrings.authSuccess)
                                         delay(2000)
                                         navigateToHome()
                                     }
@@ -107,12 +107,12 @@ fun AuthScreen(
                             )
                             loadingState = false
                         }.onFailure { error ->
-                            if (error.message?.contains(Strings.error_network) == true) {
-                                messageBarState.addError(Strings.error_internet)
-                            } else if (error.message?.contains(Strings.error_idtoken) == true) {
-                                messageBarState.addError(Strings.error_signincanceled)
+                            if (error.message?.contains(EnglishStrings.errorNetwork) == true) {
+                                messageBarState.addError(EnglishStrings.errorInternet)
+                            } else if (error.message?.contains(EnglishStrings.errorIdToken) == true) {
+                                messageBarState.addError(EnglishStrings.errorSignInCancelled)
                             } else {
-                                messageBarState.addError(error.message ?: Strings.error_unknown)
+                                messageBarState.addError(error.message ?: EnglishStrings.errorUnknown)
                             }
                             loadingState = false
                         }
