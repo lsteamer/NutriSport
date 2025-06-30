@@ -24,6 +24,7 @@ import com.nutrisport.auth.component.GoogleButton
 import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.BebasNeueFont
 import com.nutrisport.shared.FontSize
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceBrand
 import com.nutrisport.shared.SurfaceError
@@ -72,7 +73,7 @@ fun AuthScreen(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = "KMMShoppin",
+                        text = Strings.app_name,
                         textAlign = TextAlign.Center,
                         fontFamily = BebasNeueFont(),
                         fontSize = FontSize.EXTRA_LARGE,
@@ -82,7 +83,7 @@ fun AuthScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .alpha(Alpha.HALF),
-                        text = "Sign in to Continue",
+                        text = Strings.sign_in_to_continue,
                         textAlign = TextAlign.Center,
                         fontSize = FontSize.EXTRA_REGULAR,
                         color = TextPrimary
@@ -97,7 +98,7 @@ fun AuthScreen(
                                 user = user,
                                 onSuccess = {
                                     scope.launch {
-                                        messageBarState.addSuccess("Authentication successful!")
+                                        messageBarState.addSuccess(Strings.auth_success)
                                         delay(2000)
                                         navigateToHome()
                                     }
@@ -106,12 +107,12 @@ fun AuthScreen(
                             )
                             loadingState = false
                         }.onFailure { error ->
-                            if (error.message?.contains("A network error") == true) {
-                                messageBarState.addError("Internet connection unavailable")
-                            } else if (error.message?.contains("Idtoken is null") == true) {
-                                messageBarState.addError("Sign in canceled")
+                            if (error.message?.contains(Strings.error_network) == true) {
+                                messageBarState.addError(Strings.error_internet)
+                            } else if (error.message?.contains(Strings.error_idtoken) == true) {
+                                messageBarState.addError(Strings.error_signincanceled)
                             } else {
-                                messageBarState.addError(error.message ?: "Unknown error")
+                                messageBarState.addError(error.message ?: Strings.error_unknown)
                             }
                             loadingState = false
                         }

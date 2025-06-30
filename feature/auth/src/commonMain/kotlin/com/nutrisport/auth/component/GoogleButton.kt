@@ -32,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconSecondary
 import com.nutrisport.shared.Resources
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.SurfaceDarker
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
@@ -42,8 +43,8 @@ import org.jetbrains.compose.resources.painterResource
 fun GoogleButton(
     modifier: Modifier = Modifier,
     loading: Boolean = false,
-    primaryText: String = "Sign in with Google",
-    secondaryText: String = "Please wait...",
+    primaryText: String = Strings.sign_in_google,
+    secondaryText: String = Strings.please_wait,
     icon: DrawableResource = Resources.Image.GoogleLogo,
     shape: Shape = RoundedCornerShape(size = 99.dp),
     backgroundColor: Color = SurfaceLighter,
@@ -84,7 +85,7 @@ fun GoogleButton(
                 if(!loadingState){
                     Icon(
                         painter = painterResource(icon),
-                        contentDescription = "Google Logo",
+                        contentDescription = Strings.google_logo,
                         tint = Color.Unspecified
                     )
                 }

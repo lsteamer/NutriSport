@@ -33,6 +33,7 @@ import com.nutrisport.shared.BebasNeueFont
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.Resources
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
@@ -90,7 +91,7 @@ fun HomeGraphScreen() {
                         IconButton(onClick = {}) {
                             Icon(
                                 painter = painterResource(Resources.Icon.Menu),
-                                contentDescription = "Menu Icon",
+                                contentDescription = Strings.menu_icon,
                                 tint = IconPrimary
                             )
                         }
