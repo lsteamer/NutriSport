@@ -17,6 +17,7 @@ interface StringResources {
     val errorSignInCancelled: String
     val errorUserNotAvailable : String
     val errorUserCreation: String
+    val errorWhileSigningOut: String
 
     val healthyLifestyle: String
 
@@ -49,6 +50,8 @@ object EnglishStrings : StringResources {
     override val errorSignInCancelled = "Sign in cancelled"
     override val errorUserNotAvailable = "User not available"
     override val errorUserCreation = "Error while creating a customer : "
+    override val errorWhileSigningOut = "Error while singing out : "
+
 
     override val healthyLifestyle = "Healthy Lifestyle"
 
@@ -58,8 +61,6 @@ object EnglishStrings : StringResources {
     override val googleLogo = "Google Logo"
 
     override val contentAnimation = "ContentAnimation"
-    override val customers: String
-        get() = TODO("Not yet implemented")
-    override val unknown: String
-        get() = TODO("Not yet implemented")
+    override val customers = "Customers"
+    override val unknown = "Unknown"
 }

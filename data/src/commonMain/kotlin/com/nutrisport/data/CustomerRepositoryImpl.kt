@@ -2,7 +2,8 @@ package com.nutrisport.data
 
 import com.nutrisport.data.domain.CustomerRepository
 import com.nutrisport.shared.EnglishStrings
-import com.nutrisport.shared.domain.Custome
+import com.nutrisport.shared.domain.Customer
+import com.nutrisport.shared.util.RequestState
 import dev.gitlive.firebase.Firebase
 
 import dev.gitlive.firebase.auth.FirebaseUser
@@ -44,6 +45,16 @@ class CustomerRepositoryImpl : CustomerRepository {
         } catch (e: Exception) {
 
             onError(EnglishStrings.errorUserCreation+e.message)
+        }
+    }
+
+    override suspend fun signOut(): RequestState<Unit> {
+        return try {
+            Firebase.auth.signOut()
+            RequestState.Success(Unit)
+            RequestState.Success(data = Unit)
+        } catch (e: Exception){
+            RequestState.Error(EnglishStrings.errorWhileSigningOut+e.message)
         }
     }
 }

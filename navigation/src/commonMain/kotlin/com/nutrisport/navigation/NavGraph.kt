@@ -9,13 +9,13 @@ import com.nutrisport.home.HomeGraphScreen
 import com.nutrisport.shared.navigation.Screen
 
 @Composable
-fun SetupNavGraph(startDestination: Screen = Screen.Auth){
+fun SetupNavGraph(startDestination: Screen = Screen.Auth) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
         startDestination = startDestination
-    ){
-        composable<Screen.Auth>{
+    ) {
+        composable<Screen.Auth> {
             AuthScreen(
                 navigateToHome = {
                     navController.navigate(Screen.HomeGraph) {
@@ -26,8 +26,17 @@ fun SetupNavGraph(startDestination: Screen = Screen.Auth){
                 }
             )
         }
-        composable<Screen.HomeGraph>{
-            HomeGraphScreen()
+        composable<Screen.HomeGraph> {
+            HomeGraphScreen(
+                navigateToAuth = {
+                    navController.navigate(Screen.Auth) {
+                        popUpTo(Screen.HomeGraph) {
+                            inclusive = true
+                        }
+
+                    }
+                }
+            )
         }
     }
 }
