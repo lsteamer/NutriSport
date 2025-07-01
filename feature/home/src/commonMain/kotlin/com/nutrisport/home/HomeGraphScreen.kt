@@ -1,8 +1,12 @@
 package com.nutrisport.home
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -73,13 +77,16 @@ fun HomeGraphScreen() {
     val screenWidth = remember { getScreenWidth() }
     var drawerState by remember { mutableStateOf(CustomDrawerState.Closed) }
 
-    val offsetValue by remember { derivedStateOf { (screenWidth / 1.5).dp } }
+    val offsetValue by remember { derivedStateOf { (screenWidth / 1.7).dp } }
     val animatedOffset by animateDpAsState(
         targetValue = if (drawerState.isOpened()) offsetValue else 0.dp
     )
+    val animatedBackground by animateColorAsState(
+        targetValue = if (drawerState.isOpened()) SurfaceLighter else Surface
+    )
 
     val animatedScale by animateFloatAsState(
-        targetValue = if (drawerState.isOpened()) 0.85f else 1f
+        targetValue = if (drawerState.isOpened()) 0.93f else 1f
     )
 
     val animatedRadius by animateDpAsState(
@@ -88,7 +95,7 @@ fun HomeGraphScreen() {
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(SurfaceLighter)
+            .background(animatedBackground)
             .systemBarsPadding()
     ) {
         CustomDrawer(
@@ -105,7 +112,7 @@ fun HomeGraphScreen() {
                 .scale(scale = animatedScale)
                 .shadow(
                     elevation = 20.dp,
-                    shape = RoundedCornerShape(size = 20.dp)
+                    shape = RoundedCornerShape(size = animatedRadius)
                 )
         ) {
             Scaffold(
@@ -127,13 +134,19 @@ fun HomeGraphScreen() {
                             }
                         },
                         navigationIcon = {
-                            IconButton(onClick = {drawerState = drawerState.toggle()}) {
-                                Icon(
-                                    painter = painterResource(Resources.Icon.Menu),
-                                    contentDescription = EnglishStrings.menuIcon,
-                                    tint = IconPrimary
-                                )
+                            IconButton(onClick = { drawerState = drawerState.toggle() }) {
+                                AnimatedContent(
+                                    targetState = drawerState.isOpened(),
+                                    transitionSpec = { fadeIn() togetherWith  fadeOut() }
+                                ) { isOpen ->
+                                    Icon(
+                                        painter = painterResource(if (isOpen) Resources.Icon.Close else Resources.Icon.Menu),
+                                        contentDescription = EnglishStrings.menuIcon,
+                                        tint = IconPrimary
+                                    )
+                                }
                             }
+
                         },
                         colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                             containerColor = Surface,
