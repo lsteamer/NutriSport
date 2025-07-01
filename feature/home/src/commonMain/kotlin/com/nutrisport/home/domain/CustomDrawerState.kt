@@ -9,7 +9,7 @@ fun CustomDrawerState.isOpened(): Boolean {
     return this == CustomDrawerState.Opened
 }
 
-fun CustomDrawerState.opposite(): CustomDrawerState {
+fun CustomDrawerState.toggle(): CustomDrawerState {
     return if (this == CustomDrawerState.Opened) CustomDrawerState.Closed
     else CustomDrawerState.Opened
 

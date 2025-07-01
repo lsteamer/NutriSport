@@ -1,14 +1,18 @@
 package com.nutrisport.home
 
 import androidx.compose.animation.AnimatedContent
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.systemBarsPadding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -19,8 +23,13 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.scale
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,6 +38,9 @@ import androidx.navigation.compose.rememberNavController
 import com.nutrisport.home.component.BottomBar
 import com.nutrisport.home.component.CustomDrawer
 import com.nutrisport.home.domain.BottomBarDestination
+import com.nutrisport.home.domain.CustomDrawerState
+import com.nutrisport.home.domain.isOpened
+import com.nutrisport.home.domain.toggle
 import com.nutrisport.shared.BebasNeueFont
 import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
@@ -38,6 +50,7 @@ import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.navigation.Screen
+import com.nutrisport.shared.util.getScreenWidth
 import org.jetbrains.compose.resources.painterResource
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -57,6 +70,21 @@ fun HomeGraphScreen() {
             }
         }
     }
+    val screenWidth = remember { getScreenWidth() }
+    var drawerState by remember { mutableStateOf(CustomDrawerState.Closed) }
+
+    val offsetValue by remember { derivedStateOf { (screenWidth / 1.5).dp } }
+    val animatedOffset by animateDpAsState(
+        targetValue = if (drawerState.isOpened()) offsetValue else 0.dp
+    )
+
+    val animatedScale by animateFloatAsState(
+        targetValue = if (drawerState.isOpened()) 0.85f else 1f
+    )
+
+    val animatedRadius by animateDpAsState(
+        targetValue = if (drawerState.isOpened()) 20.dp else 0.dp
+    )
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -69,81 +97,94 @@ fun HomeGraphScreen() {
             onContactUsClick = {},
             onAdminPanelClick = {}
         )
-        Scaffold(
-            containerColor = Surface,
-            topBar = {
-                CenterAlignedTopAppBar(
-                    title = {
-                        AnimatedContent(
-                            targetState = selectedDestination
-                        ) { destination ->
-                            Text(
-                                text = destination.title,
-                                fontFamily = BebasNeueFont(),
-                                fontSize = FontSize.LARGE,
-                                color = TextPrimary
-
-                            )
-
-                        }
-                    },
-                    navigationIcon = {
-                        IconButton(onClick = {}) {
-                            Icon(
-                                painter = painterResource(Resources.Icon.Menu),
-                                contentDescription = EnglishStrings.menuIcon,
-                                tint = IconPrimary
-                            )
-                        }
-                    },
-                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                        containerColor = Surface,
-                        scrolledContainerColor = Surface,
-                        navigationIconContentColor = IconPrimary,
-                        titleContentColor = TextPrimary,
-                        actionIconContentColor = IconPrimary
-                    )
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(size = animatedRadius))
+                .offset(x = animatedOffset)
+                .scale(scale = animatedScale)
+                .shadow(
+                    elevation = 20.dp,
+                    shape = RoundedCornerShape(size = 20.dp)
                 )
-            }
-        ) { padding ->
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(
-                        horizontal = padding.calculateTopPadding(),
-                        vertical = padding.calculateBottomPadding()
-                    )
-            ) {
-                NavHost(
-                    modifier = Modifier.weight(1f),
-                    navController = navController,
-                    startDestination = Screen.ProductsOverview
-                ) {
-                    composable<Screen.ProductsOverview> {}
-                    composable<Screen.Cart> {}
-                    composable<Screen.Categories> {}
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-                Box(
-                    modifier = Modifier
-                        .padding(all = 12.dp)
-                ) {
-                    BottomBar(
-                        selected = selectedDestination,
-                        onSelect = { destination ->
+        ) {
+            Scaffold(
+                containerColor = Surface,
+                topBar = {
+                    CenterAlignedTopAppBar(
+                        title = {
+                            AnimatedContent(
+                                targetState = selectedDestination
+                            ) { destination ->
+                                Text(
+                                    text = destination.title,
+                                    fontFamily = BebasNeueFont(),
+                                    fontSize = FontSize.LARGE,
+                                    color = TextPrimary
 
-                            navController.navigate(destination.screen) {
-                                launchSingleTop = true
-                                popUpTo<Screen.ProductsOverview> {
-                                    saveState = true
-                                    inclusive = false
-                                }
-                                restoreState = true
+                                )
+
                             }
-                        }
+                        },
+                        navigationIcon = {
+                            IconButton(onClick = {drawerState = drawerState.toggle()}) {
+                                Icon(
+                                    painter = painterResource(Resources.Icon.Menu),
+                                    contentDescription = EnglishStrings.menuIcon,
+                                    tint = IconPrimary
+                                )
+                            }
+                        },
+                        colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                            containerColor = Surface,
+                            scrolledContainerColor = Surface,
+                            navigationIconContentColor = IconPrimary,
+                            titleContentColor = TextPrimary,
+                            actionIconContentColor = IconPrimary
+                        )
                     )
                 }
+            ) { padding ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(
+                            horizontal = padding.calculateTopPadding(),
+                            vertical = padding.calculateBottomPadding()
+                        )
+                ) {
+                    NavHost(
+                        modifier = Modifier.weight(1f),
+                        navController = navController,
+                        startDestination = Screen.ProductsOverview
+                    ) {
+                        composable<Screen.ProductsOverview> {}
+                        composable<Screen.Cart> {}
+                        composable<Screen.Categories> {}
+                    }
+                    Spacer(modifier = Modifier.height(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .padding(all = 12.dp)
+                    ) {
+                        BottomBar(
+                            selected = selectedDestination,
+                            onSelect = { destination ->
+
+                                navController.navigate(destination.screen) {
+                                    launchSingleTop = true
+                                    popUpTo<Screen.ProductsOverview> {
+                                        saveState = true
+                                        inclusive = false
+                                    }
+                                    restoreState = true
+                                }
+                            }
+                        )
+                    }
+                }
             }
+
         }
     }
 }
