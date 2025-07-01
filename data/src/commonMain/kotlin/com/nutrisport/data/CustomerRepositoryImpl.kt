@@ -1,7 +1,8 @@
 package com.nutrisport.data
 
 import com.nutrisport.data.domain.CustomerRepository
-import com.nutrisport.shared.domain.Customer
+import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.domain.Custome
 import dev.gitlive.firebase.Firebase
 
 import dev.gitlive.firebase.auth.FirebaseUser
@@ -20,12 +21,12 @@ class CustomerRepositoryImpl : CustomerRepository {
     ) {
         try {
             if (user != null) {
-                val customerCollection = Firebase.firestore.collection("customers")
+                val customerCollection = Firebase.firestore.collection(EnglishStrings.customers)
                 val customer = Customer(
                     id = user.uid,
-                    firstName = user.displayName?.split(" ")?.firstOrNull() ?: "Unknown",
-                    lastName = user.displayName?.split(" ")?.lastOrNull() ?: "Unknown",
-                    email = user?.email ?: "Unknown",
+                    firstName = user.displayName?.split(" ")?.firstOrNull() ?: EnglishStrings.unknown,
+                    lastName = user.displayName?.split(" ")?.lastOrNull() ?: EnglishStrings.unknown,
+                    email = user?.email ?: EnglishStrings.unknown,
                 )
 
                 val customerExists = customerCollection.document(user.uid).get().exists
@@ -37,11 +38,12 @@ class CustomerRepositoryImpl : CustomerRepository {
                     onSuccess()
                 }
             } else {
-                onError("User not available.")
+                onError(EnglishStrings.errorUserNotAvailable)
             }
 
         } catch (e: Exception) {
-            onError("Error while creating a customer : ${e.message}")
+
+            onError(EnglishStrings.errorUserCreation+e.message)
         }
     }
 }

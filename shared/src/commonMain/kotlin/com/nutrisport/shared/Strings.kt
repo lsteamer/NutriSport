@@ -15,6 +15,8 @@ interface StringResources {
     val errorInternet: String
     val errorIdToken: String
     val errorSignInCancelled: String
+    val errorUserNotAvailable : String
+    val errorUserCreation: String
 
     val healthyLifestyle: String
 
@@ -22,6 +24,11 @@ interface StringResources {
 
     val menuIcon: String
     val googleLogo: String
+
+    val contentAnimation: String
+
+    val customers : String
+    val unknown : String
 
 }
 
@@ -40,6 +47,8 @@ object EnglishStrings : StringResources {
     override val errorInternet = "Internet connection unavailable"
     override val errorIdToken = "ID token is null"
     override val errorSignInCancelled = "Sign in cancelled"
+    override val errorUserNotAvailable = "User not available"
+    override val errorUserCreation = "Error while creating a customer : "
 
     override val healthyLifestyle = "Healthy Lifestyle"
 
@@ -47,4 +56,10 @@ object EnglishStrings : StringResources {
 
     override val menuIcon = "Menu Icon"
     override val googleLogo = "Google Logo"
+
+    override val contentAnimation = "ContentAnimation"
+    override val customers: String
+        get() = TODO("Not yet implemented")
+    override val unknown: String
+        get() = TODO("Not yet implemented")
 }
