@@ -22,6 +22,7 @@ interface StringResources {
     val healthyLifestyle: String
 
     val drawerItemIcon: String
+    val textFieldIcon: String
 
     val menuIcon: String
     val googleLogo: String
@@ -56,6 +57,7 @@ object EnglishStrings : StringResources {
     override val healthyLifestyle = "Healthy Lifestyle"
 
     override val drawerItemIcon = "Drawer item icon"
+    override val textFieldIcon = "Text Field icon"
 
     override val menuIcon = "Menu Icon"
     override val googleLogo = "Google Logo"

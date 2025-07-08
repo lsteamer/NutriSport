@@ -34,7 +34,6 @@ import com.nutrisport.shared.EnglishStrings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconSecondary
 import com.nutrisport.shared.Resources
-import com.nutrisport.shared.SurfaceDarker
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
 import org.jetbrains.compose.resources.DrawableResource
