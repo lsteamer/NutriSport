@@ -20,7 +20,7 @@ kotlin {
         iosSimulatorArm64()
     ).forEach { iosTarget ->
         iosTarget.binaries.framework {
-            baseName = "di"
+            baseName = "profile"
             isStatic = true
         }
     }
@@ -36,24 +36,24 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodel)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-            implementation(libs.koin.core)
+            implementation(libs.messagebar.kmp)
+
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
 
-            implementation(project(":feature:auth"))
-            implementation(project(":feature:home"))
-            implementation(project(":data"))
+            implementation(project(path = ":shared"))
+            implementation(project(path = ":data"))
         }
     }
 }
 
 android {
-    namespace = "com.anjegonz.di"
+    namespace = "com.anjegonz.profile"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
         minSdk = libs.versions.android.minSdk.get().toInt()
-        lint.targetSdk = libs.versions.android.targetSdk.get().toInt()
+        targetSdk = libs.versions.android.targetSdk.get().toInt()
     }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
