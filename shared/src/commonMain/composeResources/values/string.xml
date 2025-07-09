@@ -25,4 +25,12 @@
     <string name="customers">Customers</string>
     <string name="unknown">Unknown</string>
 
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="city">City</string>
+    <string name="postal_code">Postal Code</string>
+    <string name="address">Address</string>
+    <string name="phone_number">Phone Number</string>
+
 </resources>
