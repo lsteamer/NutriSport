@@ -14,10 +14,13 @@
     <string name="error_while_creating_customer">Error while creating a customer : </string>
     <string name="error_while_signing_out">Error while singing out : </string>
     <string name="healthy_lifestyle">Healthy Lifestyle</string>
+
     <string name="drawer_item_icon">Drawer item icon</string>
     <string name="text_field_icon">Text Field icon</string>
     <string name="menu_icon">Menu Icon</string>
     <string name="google_logo">Google Logo</string>
+    <string name="button_icon">Button Icon</string>
+
     <string name="content_animation">ContentAnimation</string>
     <string name="customers">Customers</string>
     <string name="unknown">Unknown</string>

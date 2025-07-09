@@ -1,13 +1,13 @@
-package com.nutrisport.profile.component
+package com.nutrisport.shared.component
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
-import androidx.compose.material.TextField
-import androidx.compose.material.TextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -61,10 +61,15 @@ fun CustomTextField(
         singleLine = !expanded,
         shape = RoundedCornerShape(size = 6.dp),
         keyboardOptions = keyboardOptions,
-        colors = TextFieldDefaults.textFieldColors(
-            textColor = TextPrimary,
+        colors = TextFieldDefaults.colors(
+            unfocusedContainerColor = SurfaceLighter,
+            focusedContainerColor = SurfaceLighter,
+            unfocusedTextColor = TextPrimary,
+            focusedTextColor = TextPrimary,
             disabledTextColor = TextPrimary.copy(alpha = Alpha.DISABLED),
-            backgroundColor = SurfaceLighter
+            focusedPlaceholderColor = TextPrimary.copy(alpha = Alpha.HALF),
+            unfocusedPlaceholderColor = TextPrimary.copy(alpha = Alpha.HALF),
+            disabledPlaceholderColor = TextPrimary.copy(alpha = Alpha.DISABLED)
         )
     )
 

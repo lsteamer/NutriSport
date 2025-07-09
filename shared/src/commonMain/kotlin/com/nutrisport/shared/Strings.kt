@@ -4,6 +4,7 @@ import nutrisport.shared.generated.resources.Res
 import nutrisport.shared.generated.resources.app_name
 import nutrisport.shared.generated.resources.auth_success
 import nutrisport.shared.generated.resources.brand_name
+import nutrisport.shared.generated.resources.button_icon
 import nutrisport.shared.generated.resources.content_animation
 import nutrisport.shared.generated.resources.customers
 import nutrisport.shared.generated.resources.drawer_item_icon
@@ -51,6 +52,7 @@ object Strings {
     val textFieldIcon = Res.string.text_field_icon
     val menuIcon = Res.string.menu_icon
     val googleLogo = Res.string.google_logo
+    val buttonIcon = Res.string.button_icon
 
     val contentAnimation = Res.string.content_animation
     val customers = Res.string.customers
