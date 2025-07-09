@@ -1,7 +1,7 @@
 package com.nutrisport.data
 
 import com.nutrisport.data.domain.CustomerRepository
-import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.domain.Customer
 import com.nutrisport.shared.util.RequestState
 import dev.gitlive.firebase.Firebase
@@ -9,6 +9,7 @@ import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseUser
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore
+import org.jetbrains.compose.resources.getString
 
 class CustomerRepositoryImpl : CustomerRepository {
     override fun getCurrentUserId(): String? {
@@ -22,29 +23,29 @@ class CustomerRepositoryImpl : CustomerRepository {
     ) {
         try {
             if (user != null) {
-                val customerCollection = Firebase.firestore.collection(EnglishStrings.customers)
+                val customerCollection = Firebase.firestore.collection(getString(Strings.customers))
                 val customer = Customer(
                     id = user.uid,
-                    firstName = user.displayName?.split(" ")?.firstOrNull() ?: EnglishStrings.unknown,
-                    lastName = user.displayName?.split(" ")?.lastOrNull() ?: EnglishStrings.unknown,
-                    email = user?.email ?: EnglishStrings.unknown,
+                    firstName = user.displayName?.split(" ")?.firstOrNull() ?: getString(Strings.unknown),
+                    lastName = user.displayName?.split(" ")?.lastOrNull() ?: getString(Strings.unknown),
+                    email = user?.email ?: getString(Strings.unknown),
                 )
 
                 val customerExists = customerCollection.document(user.uid).get().exists
 
-                if(customerExists){
+                if (customerExists) {
                     onSuccess()
                 } else {
                     customerCollection.document(user.uid).set(customer)
                     onSuccess()
                 }
             } else {
-                onError(EnglishStrings.errorUserNotAvailable)
+                onError(getString(Strings.errorUserNotAvailable))
             }
 
         } catch (e: Exception) {
 
-            onError(EnglishStrings.errorUserCreation+e.message)
+            onError(getString(Strings.errorUserCreation) + e.message)
         }
     }
 
@@ -53,8 +54,8 @@ class CustomerRepositoryImpl : CustomerRepository {
             Firebase.auth.signOut()
             RequestState.Success(Unit)
             RequestState.Success(data = Unit)
-        } catch (e: Exception){
-            RequestState.Error(EnglishStrings.errorWhileSigningOut+e.message)
+        } catch (e: Exception) {
+            RequestState.Error(getString(Strings.errorWhileSigningOut) + e.message)
         }
     }
 }

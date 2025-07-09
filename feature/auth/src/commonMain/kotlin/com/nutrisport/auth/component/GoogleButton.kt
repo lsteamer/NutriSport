@@ -30,7 +30,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.BorderIdle
-import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconSecondary
 import com.nutrisport.shared.Resources
@@ -38,13 +38,14 @@ import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun GoogleButton(
     modifier: Modifier = Modifier,
     loading: Boolean = false,
-    primaryText: String = EnglishStrings.signIntoGoogle,
-    secondaryText: String = EnglishStrings.pleaseWait,
+    primaryText: String = stringResource(Strings.signIntoGoogle),
+    secondaryText: String = stringResource(Strings.pleaseWait),
     icon: DrawableResource = Resources.Image.GoogleLogo,
     shape: Shape = RoundedCornerShape(size = 99.dp),
     backgroundColor: Color = SurfaceLighter,
@@ -85,7 +86,7 @@ fun GoogleButton(
                 if(!loadingState){
                     Icon(
                         painter = painterResource(icon),
-                        contentDescription = EnglishStrings.googleLogo,
+                        contentDescription = stringResource(Strings.googleLogo),
                         tint = Color.Unspecified
                     )
                 }

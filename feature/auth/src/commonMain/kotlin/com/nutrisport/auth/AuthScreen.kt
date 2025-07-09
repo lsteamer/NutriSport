@@ -23,7 +23,7 @@ import com.mmk.kmpauth.firebase.google.GoogleButtonUiContainerFirebase
 import com.nutrisport.auth.component.GoogleButton
 import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.BebasNeueFont
-import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.SurfaceBrand
@@ -33,6 +33,8 @@ import com.nutrisport.shared.TextSecondary
 import com.nutrisport.shared.TextWhite
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.jetbrains.compose.resources.getString
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
@@ -45,6 +47,12 @@ fun AuthScreen(
     val viewModel = koinViewModel<AuthViewModel>()
     val messageBarState = rememberMessageBarState()
     var loadingState by remember { mutableStateOf(false) }
+    val errorUnknownString: String = stringResource(Strings.errorUnknown)
+    val errorNetworkString: String = stringResource(Strings.errorNetwork)
+    val errorInternetString: String = stringResource(Strings.errorInternet)
+    val errorIdTokenString: String = stringResource(Strings.errorIdToken)
+    val errorSignInCancelledString: String = stringResource(Strings.errorSignInCancelled)
+
 
     Scaffold { padding ->
         ContentWithMessageBar(
@@ -73,7 +81,7 @@ fun AuthScreen(
                 ) {
                     Text(
                         modifier = Modifier.fillMaxWidth(),
-                        text = EnglishStrings.appName,
+                        text = stringResource(Strings.appName),
                         textAlign = TextAlign.Center,
                         fontFamily = BebasNeueFont(),
                         fontSize = FontSize.EXTRA_LARGE,
@@ -83,7 +91,7 @@ fun AuthScreen(
                         modifier = Modifier
                             .fillMaxWidth()
                             .alpha(Alpha.HALF),
-                        text = EnglishStrings.signInToContinue,
+                        text = stringResource(Strings.signInToContinue),
                         textAlign = TextAlign.Center,
                         fontSize = FontSize.EXTRA_REGULAR,
                         color = TextPrimary
@@ -98,7 +106,7 @@ fun AuthScreen(
                                 user = user,
                                 onSuccess = {
                                     scope.launch {
-                                        messageBarState.addSuccess(EnglishStrings.authSuccess)
+                                        messageBarState.addSuccess(getString(Strings.authSuccess))
                                         delay(2000)
                                         navigateToHome()
                                     }
@@ -107,12 +115,12 @@ fun AuthScreen(
                             )
                             loadingState = false
                         }.onFailure { error ->
-                            if (error.message?.contains(EnglishStrings.errorNetwork) == true) {
-                                messageBarState.addError(EnglishStrings.errorInternet)
-                            } else if (error.message?.contains(EnglishStrings.errorIdToken) == true) {
-                                messageBarState.addError(EnglishStrings.errorSignInCancelled)
+                            if (error.message?.contains(errorNetworkString) == true) {
+                                messageBarState.addError(errorInternetString)
+                            } else if (error.message?.contains(errorIdTokenString) == true) {
+                                messageBarState.addError(errorSignInCancelledString)
                             } else {
-                                messageBarState.addError(error.message ?: EnglishStrings.errorUnknown)
+                                messageBarState.addError(error.message ?: errorUnknownString)
                             }
                             loadingState = false
                         }

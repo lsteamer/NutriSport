@@ -17,13 +17,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.BorderIdle
-import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.Resources
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun AlertTextField(
@@ -52,7 +52,7 @@ fun AlertTextField(
             Image(
                 modifier = Modifier.size(14.dp),
                 painter = painterResource(icon),
-                contentDescription = EnglishStrings.textFieldIcon
+                contentDescription = stringResource(Strings.textFieldIcon)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(

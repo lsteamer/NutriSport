@@ -1,68 +1,58 @@
 package com.nutrisport.shared
 
-interface StringResources {
-    val appName: String
-
-    val brandName: String
-
-    val signInToContinue: String
-    val authSuccess: String
-    val signIntoGoogle: String
-    val pleaseWait: String
-
-    val errorUnknown: String
-    val errorNetwork: String
-    val errorInternet: String
-    val errorIdToken: String
-    val errorSignInCancelled: String
-    val errorUserNotAvailable : String
-    val errorUserCreation: String
-    val errorWhileSigningOut: String
-
-    val healthyLifestyle: String
-
-    val drawerItemIcon: String
-    val textFieldIcon: String
-
-    val menuIcon: String
-    val googleLogo: String
-
-    val contentAnimation: String
-
-    val customers : String
-    val unknown : String
-
-}
-
-object EnglishStrings : StringResources {
-    override val appName = "KMMShoppin"
-
-    override val brandName = "NutriSport"
-
-    override val signInToContinue = "Sign in to Continue"
-    override val authSuccess = "Authentication successful!"
-    override val signIntoGoogle = "Sign in with Google"
-    override val pleaseWait = "Please wait..."
-
-    override val errorUnknown = "Unknown error"
-    override val errorNetwork = "Network error"
-    override val errorInternet = "Internet connection unavailable"
-    override val errorIdToken = "ID token is null"
-    override val errorSignInCancelled = "Sign in cancelled"
-    override val errorUserNotAvailable = "User not available"
-    override val errorUserCreation = "Error while creating a customer : "
-    override val errorWhileSigningOut = "Error while singing out : "
+import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.app_name
+import nutrisport.shared.generated.resources.auth_success
+import nutrisport.shared.generated.resources.brand_name
+import nutrisport.shared.generated.resources.content_animation
+import nutrisport.shared.generated.resources.customers
+import nutrisport.shared.generated.resources.drawer_item_icon
+import nutrisport.shared.generated.resources.error_internet
+import nutrisport.shared.generated.resources.error_network
+import nutrisport.shared.generated.resources.error_unknown
+import nutrisport.shared.generated.resources.error_while_creating_customer
+import nutrisport.shared.generated.resources.error_while_signing_out
+import nutrisport.shared.generated.resources.google_logo
+import nutrisport.shared.generated.resources.healthy_lifestyle
+import nutrisport.shared.generated.resources.id_token_null
+import nutrisport.shared.generated.resources.menu_icon
+import nutrisport.shared.generated.resources.please_wait
+import nutrisport.shared.generated.resources.sign_in_cancelled
+import nutrisport.shared.generated.resources.sign_in_to_continue
+import nutrisport.shared.generated.resources.sign_in_to_google
+import nutrisport.shared.generated.resources.text_field_icon
+import nutrisport.shared.generated.resources.unknown
+import nutrisport.shared.generated.resources.user_not_available
 
 
-    override val healthyLifestyle = "Healthy Lifestyle"
+object Strings {
+    val appName = Res.string.app_name
 
-    override val drawerItemIcon = "Drawer item icon"
-    override val textFieldIcon = "Text Field icon"
+    val brandName = Res.string.brand_name
 
-    override val menuIcon = "Menu Icon"
-    override val googleLogo = "Google Logo"
+    val signInToContinue = Res.string.sign_in_to_continue
+    val authSuccess = Res.string.auth_success
+    val signIntoGoogle = Res.string.sign_in_to_google
+    val pleaseWait = Res.string.please_wait
 
-    override val contentAnimation = "ContentAnimation"
-    override val customers = "Customers"
-    override val unknown = "Unknown"
+    val errorUnknown = Res.string.error_unknown
+    val errorNetwork = Res.string.error_network
+    val errorInternet = Res.string.error_internet
+    val errorIdToken = Res.string.id_token_null
+    val errorSignInCancelled = Res.string.sign_in_cancelled
+    val errorUserNotAvailable = Res.string.user_not_available
+    val errorUserCreation = Res.string.error_while_creating_customer
+    val errorWhileSigningOut = Res.string.error_while_signing_out
+
+
+    val healthyLifestyle = Res.string.healthy_lifestyle
+
+    val drawerItemIcon = Res.string.drawer_item_icon
+    val textFieldIcon = Res.string.text_field_icon
+    val menuIcon = Res.string.menu_icon
+    val googleLogo = Res.string.google_logo
+
+    val contentAnimation = Res.string.content_animation
+    val customers = Res.string.customers
+    val unknown = Res.string.unknown
 }

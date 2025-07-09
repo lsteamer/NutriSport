@@ -47,7 +47,7 @@ import com.nutrisport.home.domain.CustomDrawerState
 import com.nutrisport.home.domain.isOpened
 import com.nutrisport.home.domain.toggle
 import com.nutrisport.shared.BebasNeueFont
-import com.nutrisport.shared.EnglishStrings
+import com.nutrisport.shared.Strings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.Resources
@@ -57,6 +57,7 @@ import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.navigation.Screen
 import com.nutrisport.shared.util.getScreenWidth
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
@@ -157,7 +158,7 @@ fun HomeGraphScreen(
                                 ) { isOpen ->
                                     Icon(
                                         painter = painterResource(if (isOpen) Resources.Icon.Close else Resources.Icon.Menu),
-                                        contentDescription = EnglishStrings.menuIcon,
+                                        contentDescription = stringResource(Strings.menuIcon),
                                         tint = IconPrimary
                                     )
                                 }
