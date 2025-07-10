@@ -20,10 +20,16 @@
     <string name="menu_icon">Menu Icon</string>
     <string name="google_logo">Google Logo</string>
     <string name="button_icon">Button Icon</string>
+    <string name="checkmark_icon">Checkmark Icon</string>
+
+    <string name="country_flag">Country flag image</string>
 
     <string name="content_animation">ContentAnimation</string>
     <string name="customers">Customers</string>
     <string name="unknown">Unknown</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+
 
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -32,5 +38,12 @@
     <string name="postal_code">Postal Code</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
+
+
+
+    <string name="pick_country">Pick a Country</string>
+    <string name="dial_code">Dial Code</string>
+
+
 
 </resources>

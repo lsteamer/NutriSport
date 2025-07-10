@@ -6,9 +6,14 @@ import nutrisport.shared.generated.resources.app_name
 import nutrisport.shared.generated.resources.auth_success
 import nutrisport.shared.generated.resources.brand_name
 import nutrisport.shared.generated.resources.button_icon
+import nutrisport.shared.generated.resources.cancel
+import nutrisport.shared.generated.resources.checkmark_icon
 import nutrisport.shared.generated.resources.city
+import nutrisport.shared.generated.resources.confirm
 import nutrisport.shared.generated.resources.content_animation
+import nutrisport.shared.generated.resources.country_flag
 import nutrisport.shared.generated.resources.customers
+import nutrisport.shared.generated.resources.dial_code
 import nutrisport.shared.generated.resources.drawer_item_icon
 import nutrisport.shared.generated.resources.email
 import nutrisport.shared.generated.resources.error_internet
@@ -23,6 +28,7 @@ import nutrisport.shared.generated.resources.id_token_null
 import nutrisport.shared.generated.resources.last_name
 import nutrisport.shared.generated.resources.menu_icon
 import nutrisport.shared.generated.resources.phone_number
+import nutrisport.shared.generated.resources.pick_country
 import nutrisport.shared.generated.resources.please_wait
 import nutrisport.shared.generated.resources.postal_code
 import nutrisport.shared.generated.resources.sign_in_cancelled
@@ -60,10 +66,14 @@ object Strings {
     val menuIcon = Res.string.menu_icon
     val googleLogo = Res.string.google_logo
     val buttonIcon = Res.string.button_icon
+    val checkmarkIcon = Res.string.checkmark_icon
+    val countryFlag = Res.string.country_flag
 
     val contentAnimation = Res.string.content_animation
     val customers = Res.string.customers
     val unknown = Res.string.unknown
+    val confirm = Res.string.confirm
+    val cancel = Res.string.cancel
 
     val firstName = Res.string.first_name
     val lastName = Res.string.last_name
@@ -72,4 +82,7 @@ object Strings {
     val postalCode = Res.string.postal_code
     val address = Res.string.address
     val phoneNumber = Res.string.phone_number
+
+    val pickCountry = Res.string.pick_country
+    val dialCode = Res.string.dial_code
 }
