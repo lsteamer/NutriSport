@@ -216,7 +216,7 @@ private fun Selector(
         contentAlignment = Alignment.Center
     ) {
         AnimatedVisibility(
-            visible = isSelectedK
+            visible = isSelected
         ) {
             Icon(
                 modifier = Modifier.size(14.dp),
