@@ -21,6 +21,7 @@
     <string name="google_logo">Google Logo</string>
     <string name="button_icon">Button Icon</string>
     <string name="checkmark_icon">Checkmark Icon</string>
+    <string name="back_arrow_icon">Back Arrow Icon</string>
 
     <string name="country_flag">Country flag image</string>
 
@@ -29,6 +30,7 @@
     <string name="unknown">Unknown</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
+    <string name="update">Update</string>
 
 
     <string name="first_name">First Name</string>
@@ -44,7 +46,6 @@
     <string name="pick_country">Pick a Country</string>
     <string name="dial_code">Dial Code</string>
     <string name="dial_code_not_found">Dial code not found.</string>
-
-
+    <string name="my_profile">My Profile</string>
 
 </resources>

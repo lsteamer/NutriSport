@@ -17,10 +17,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.BorderIdle
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.TextPrimary
+import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.text_field_icon
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -43,7 +44,7 @@ fun AlertTextField(
             .clip(RoundedCornerShape(6.dp))
             .clickable { onClick() }
             .padding(
-                vertical  = 20.dp,
+                vertical  = 16.dp,
                 horizontal = 16.dp
             ),
         verticalAlignment = Alignment.CenterVertically
@@ -52,7 +53,7 @@ fun AlertTextField(
             Image(
                 modifier = Modifier.size(14.dp),
                 painter = painterResource(icon),
-                contentDescription = stringResource(Strings.textFieldIcon)
+                contentDescription = stringResource(Res.string.text_field_icon)
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(

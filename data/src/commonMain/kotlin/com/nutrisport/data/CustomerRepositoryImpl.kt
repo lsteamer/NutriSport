@@ -21,7 +21,6 @@ class CustomerRepositoryImpl : CustomerRepository {
         onError: (String) -> Unit
     ) {
         try {
-
             if (user != null) {
                 val customerCollection = Firebase.firestore.collection(getString(Strings.customers))
                 val customer = Customer(

@@ -43,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.Resources
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.SurfaceLighter
 import com.nutrisport.shared.SurfaceSecondary
 import com.nutrisport.shared.IconWhite
@@ -55,7 +54,9 @@ import com.nutrisport.shared.component.NotificationCard
 import com.nutrisport.shared.domain.Country
 import nutrisport.shared.generated.resources.Res
 import nutrisport.shared.generated.resources.cancel
+import nutrisport.shared.generated.resources.checkmark_icon
 import nutrisport.shared.generated.resources.confirm
+import nutrisport.shared.generated.resources.country_flag
 import nutrisport.shared.generated.resources.dial_code
 import nutrisport.shared.generated.resources.dial_code_not_found
 import nutrisport.shared.generated.resources.pick_country
@@ -199,7 +200,7 @@ fun CountryPicker(
         Image(
             modifier = Modifier.size(14.dp),
             painter = painterResource(country.flag),
-            contentDescription = stringResource(Strings.countryFlag),
+            contentDescription = stringResource(Res.string.country_flag),
             colorFilter = ColorFilter.colorMatrix(colorMatrix)
         )
         Spacer(modifier = Modifier.width(12.dp))
@@ -224,7 +225,7 @@ private fun Selector(
         targetValue = if (isSelected) SurfaceSecondary else SurfaceLighter
     )
     Box(
-        modifier = Modifier
+        modifier = modifier
             .size(20.dp)
             .clip(CircleShape)
             .background(animatedBackground),
@@ -236,7 +237,7 @@ private fun Selector(
             Icon(
                 modifier = Modifier.size(14.dp),
                 painter = painterResource(Resources.Icon.Checkmark),
-                contentDescription = stringResource(Strings.checkmarkIcon),
+                contentDescription = stringResource(Res.string.checkmark_icon),
                 tint = IconWhite
             )
         }

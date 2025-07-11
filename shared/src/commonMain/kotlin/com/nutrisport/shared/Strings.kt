@@ -3,13 +3,8 @@ package com.nutrisport.shared
 import nutrisport.shared.generated.resources.Res
 import nutrisport.shared.generated.resources.app_name
 import nutrisport.shared.generated.resources.auth_success
+import nutrisport.shared.generated.resources.back_arrow_icon
 import nutrisport.shared.generated.resources.brand_name
-import nutrisport.shared.generated.resources.button_icon
-import nutrisport.shared.generated.resources.cancel
-import nutrisport.shared.generated.resources.checkmark_icon
-import nutrisport.shared.generated.resources.confirm
-import nutrisport.shared.generated.resources.content_animation
-import nutrisport.shared.generated.resources.country_flag
 import nutrisport.shared.generated.resources.customers
 import nutrisport.shared.generated.resources.drawer_item_icon
 import nutrisport.shared.generated.resources.error_internet
@@ -21,14 +16,14 @@ import nutrisport.shared.generated.resources.google_logo
 import nutrisport.shared.generated.resources.healthy_lifestyle
 import nutrisport.shared.generated.resources.id_token_null
 import nutrisport.shared.generated.resources.menu_icon
+import nutrisport.shared.generated.resources.my_profile
 import nutrisport.shared.generated.resources.please_wait
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
-import nutrisport.shared.generated.resources.text_field_icon
 import nutrisport.shared.generated.resources.unknown
+import nutrisport.shared.generated.resources.update
 import nutrisport.shared.generated.resources.user_not_available
-
 
 object Strings {
     val appName = Res.string.app_name
@@ -53,18 +48,14 @@ object Strings {
     val healthyLifestyle = Res.string.healthy_lifestyle
 
     val drawerItemIcon = Res.string.drawer_item_icon
-    val textFieldIcon = Res.string.text_field_icon
     val menuIcon = Res.string.menu_icon
     val googleLogo = Res.string.google_logo
-    val buttonIcon = Res.string.button_icon
-    val checkmarkIcon = Res.string.checkmark_icon
-    val countryFlag = Res.string.country_flag
+    val backArrowIcon = Res.string.back_arrow_icon
 
-    val contentAnimation = Res.string.content_animation
+
     val customers = Res.string.customers
     val unknown = Res.string.unknown
-    val confirm = Res.string.confirm
-    val cancel = Res.string.cancel
+    val update = Res.string.update
 
-
+    val myProfile = Res.string.my_profile
 }

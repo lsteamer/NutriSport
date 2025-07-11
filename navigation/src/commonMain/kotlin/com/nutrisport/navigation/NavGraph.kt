@@ -44,7 +44,9 @@ fun SetupNavGraph(startDestination: Screen = Screen.Auth) {
         }
         composable<Screen.Profile> {
             ProfileScreen(
-
+                navigateBack ={
+                    navController.navigateUp()
+                }
             )
         }
 

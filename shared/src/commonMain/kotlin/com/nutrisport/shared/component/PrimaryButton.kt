@@ -18,8 +18,9 @@ import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.ButtonDisabled
 import com.nutrisport.shared.ButtonPrimary
 import com.nutrisport.shared.FontSize
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.TextPrimary
+import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.button_icon
 import org.jetbrains.compose.resources.DrawableResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -50,7 +51,7 @@ fun PrimaryButton(
             Icon(
                 modifier = Modifier.size(14.dp),
                 painter = painterResource(icon),
-                contentDescription = stringResource(Strings.buttonIcon)
+                contentDescription = stringResource(Res.string.button_icon)
             )
         }
         Spacer(modifier = Modifier.width(8.dp))
