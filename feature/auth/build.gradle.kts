@@ -49,7 +49,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.anjegonz.auth"
+    namespace = "com.anjegonz.nutrisport.auth"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

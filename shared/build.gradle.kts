@@ -42,7 +42,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.anjegonz.shared"
+    namespace = "com.anjegonz.nutrisport.shared"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

@@ -48,7 +48,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.anjegonz.profile"
+    namespace = "com.anjegonz.nutrisport.profile"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {

@@ -48,7 +48,7 @@ kotlin {
 }
 
 android {
-    namespace = "com.anjegonz.navigation"
+    namespace = "com.anjegonz.nutrisport.navigation"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
