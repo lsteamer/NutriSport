@@ -5,7 +5,6 @@ import com.nutrisport.shared.Strings
 import com.nutrisport.shared.domain.Customer
 import com.nutrisport.shared.util.RequestState
 import dev.gitlive.firebase.Firebase
-
 import dev.gitlive.firebase.auth.FirebaseUser
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore
@@ -22,12 +21,15 @@ class CustomerRepositoryImpl : CustomerRepository {
         onError: (String) -> Unit
     ) {
         try {
+
             if (user != null) {
                 val customerCollection = Firebase.firestore.collection(getString(Strings.customers))
                 val customer = Customer(
                     id = user.uid,
-                    firstName = user.displayName?.split(" ")?.firstOrNull() ?: getString(Strings.unknown),
-                    lastName = user.displayName?.split(" ")?.lastOrNull() ?: getString(Strings.unknown),
+                    firstName = user.displayName?.split(" ")?.firstOrNull()
+                        ?: getString(Strings.unknown),
+                    lastName = user.displayName?.split(" ")?.lastOrNull()
+                        ?: getString(Strings.unknown),
                     email = user?.email ?: getString(Strings.unknown),
                 )
 

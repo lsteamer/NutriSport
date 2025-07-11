@@ -51,7 +51,14 @@ import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
 import com.nutrisport.shared.component.CustomTextField
+import com.nutrisport.shared.component.NotificationCard
 import com.nutrisport.shared.domain.Country
+import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.cancel
+import nutrisport.shared.generated.resources.confirm
+import nutrisport.shared.generated.resources.dial_code
+import nutrisport.shared.generated.resources.dial_code_not_found
+import nutrisport.shared.generated.resources.pick_country
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
@@ -74,7 +81,7 @@ fun CountryPickerDialog(
         containerColor = Surface,
         title = {
             Text(
-                text = stringResource(Strings.pickCountry),
+                text = stringResource(Res.string.pick_country),
                 fontSize = FontSize.EXTRA_MEDIUM,
                 color = TextPrimary
             )
@@ -98,25 +105,33 @@ fun CountryPickerDialog(
                             filteredCountries.addAll(allCountries)
                         }
                     },
-                    placeholder = stringResource(Strings.dialCode)
+                    placeholder = stringResource(Res.string.dial_code)
                 )
                 Spacer(modifier = Modifier.height(12.dp))
-                LazyColumn(
-                    modifier = Modifier.weight(1f),
-                    verticalArrangement = Arrangement.spacedBy(4.dp)
-                ) {
-                    items(
-                        items = filteredCountries,
-                        key = { it.ordinal }
+                if (filteredCountries.isNotEmpty()) {
+                    LazyColumn(
+                        modifier = Modifier.weight(1f),
+                        verticalArrangement = Arrangement.spacedBy(4.dp)
                     ) {
-                        CountryPicker(
-                            country = it,
-                            isSelected = selectedCountry == it,
-                            onSelect = {
-                                selectedCountry = it
-                            }
-                        )
+                        items(
+                            items = filteredCountries,
+                            key = { it.ordinal }
+                        ) {
+                            CountryPicker(
+                                country = it,
+                                isSelected = selectedCountry == it,
+                                onSelect = {
+                                    selectedCountry = it
+                                }
+                            )
+                        }
                     }
+
+                } else {
+                    NotificationCard(
+                        modifier = Modifier.fillMaxWidth(),
+                        text = stringResource(Res.string.dial_code_not_found)
+                    )
                 }
             }
         },
@@ -130,7 +145,7 @@ fun CountryPickerDialog(
                 )
             ) {
                 Text(
-                    text = stringResource(Strings.confirm),
+                    text = stringResource(Res.string.confirm),
                     fontSize = FontSize.REGULAR,
                     fontWeight = FontWeight.Medium
                 )
@@ -145,7 +160,7 @@ fun CountryPickerDialog(
                 )
             ) {
                 Text(
-                    text = stringResource(Strings.cancel),
+                    text = stringResource(Res.string.cancel),
                     fontSize = FontSize.REGULAR,
                     fontWeight = FontWeight.Medium
                 )
@@ -234,7 +249,6 @@ fun List<Country>.filterByCountry(query: String): List<Country> {
 
     return this.filter {
         it.name.lowercase().contains(queryLower) ||
-                it.name.lowercase().contains(queryLower) ||
                 (queryInt != null && it.dialCode == queryInt)
     }
 }

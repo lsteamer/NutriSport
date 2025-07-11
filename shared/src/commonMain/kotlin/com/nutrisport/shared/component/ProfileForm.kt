@@ -13,8 +13,15 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
+import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.address
+import nutrisport.shared.generated.resources.city
+import nutrisport.shared.generated.resources.email
+import nutrisport.shared.generated.resources.first_name
+import nutrisport.shared.generated.resources.last_name
+import nutrisport.shared.generated.resources.phone_number
+import nutrisport.shared.generated.resources.postal_code
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
@@ -54,43 +61,43 @@ fun ProfileForm(
             CustomTextField(
                 value = firstName,
                 onValueChange = onFirstNameChange,
-                placeholder = stringResource(Strings.firstName),
+                placeholder = stringResource(Res.string.first_name),
                 error = firstName.length !in 3..50
             )
             CustomTextField(
                 value = lastName,
                 onValueChange = onLastNameChange,
-                placeholder = stringResource(Strings.lastName),
+                placeholder = stringResource(Res.string.last_name),
                 error = lastName.length !in 3..50
             )
             CustomTextField(
                 value = email,
                 onValueChange = { },
-                placeholder = stringResource(Strings.email),
+                placeholder = stringResource(Res.string.email),
                 enabled = false
             )
             CustomTextField(
                 value = city,
                 onValueChange = onCityChange,
-                placeholder = stringResource(Strings.city),
+                placeholder = stringResource(Res.string.city),
                 error = city.length !in 3..50
             )
             CustomTextField(
                 value = "${postalCode ?: ""}",
                 onValueChange = { onPostalCodeChange(it.toIntOrNull()) },
-                placeholder = stringResource(Strings.postalCode),
+                placeholder = stringResource(Res.string.postal_code),
                 error = postalCode.toString().length !in 3..7
             )
             CustomTextField(
                 value = address,
                 onValueChange = onAddressChange,
-                placeholder = stringResource(Strings.address),
+                placeholder = stringResource(Res.string.address),
                 error = address.length !in 3..50
             )
             CustomTextField(
                 value = phoneNumber ?: "",
                 onValueChange = onPhoneNumberChange,
-                placeholder = stringResource(Strings.phoneNumber),
+                placeholder = stringResource(Res.string.phone_number),
                 error = phoneNumber.toString().length !in 3..15
             )
         }

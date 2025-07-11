@@ -1,36 +1,27 @@
 package com.nutrisport.shared
 
 import nutrisport.shared.generated.resources.Res
-import nutrisport.shared.generated.resources.address
 import nutrisport.shared.generated.resources.app_name
 import nutrisport.shared.generated.resources.auth_success
 import nutrisport.shared.generated.resources.brand_name
 import nutrisport.shared.generated.resources.button_icon
 import nutrisport.shared.generated.resources.cancel
 import nutrisport.shared.generated.resources.checkmark_icon
-import nutrisport.shared.generated.resources.city
 import nutrisport.shared.generated.resources.confirm
 import nutrisport.shared.generated.resources.content_animation
 import nutrisport.shared.generated.resources.country_flag
 import nutrisport.shared.generated.resources.customers
-import nutrisport.shared.generated.resources.dial_code
 import nutrisport.shared.generated.resources.drawer_item_icon
-import nutrisport.shared.generated.resources.email
 import nutrisport.shared.generated.resources.error_internet
 import nutrisport.shared.generated.resources.error_network
 import nutrisport.shared.generated.resources.error_unknown
 import nutrisport.shared.generated.resources.error_while_creating_customer
 import nutrisport.shared.generated.resources.error_while_signing_out
-import nutrisport.shared.generated.resources.first_name
 import nutrisport.shared.generated.resources.google_logo
 import nutrisport.shared.generated.resources.healthy_lifestyle
 import nutrisport.shared.generated.resources.id_token_null
-import nutrisport.shared.generated.resources.last_name
 import nutrisport.shared.generated.resources.menu_icon
-import nutrisport.shared.generated.resources.phone_number
-import nutrisport.shared.generated.resources.pick_country
 import nutrisport.shared.generated.resources.please_wait
-import nutrisport.shared.generated.resources.postal_code
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
@@ -75,14 +66,5 @@ object Strings {
     val confirm = Res.string.confirm
     val cancel = Res.string.cancel
 
-    val firstName = Res.string.first_name
-    val lastName = Res.string.last_name
-    val email = Res.string.email
-    val city = Res.string.city
-    val postalCode = Res.string.postal_code
-    val address = Res.string.address
-    val phoneNumber = Res.string.phone_number
 
-    val pickCountry = Res.string.pick_country
-    val dialCode = Res.string.dial_code
 }

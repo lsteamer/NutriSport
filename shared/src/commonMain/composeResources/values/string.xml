@@ -43,6 +43,7 @@
 
     <string name="pick_country">Pick a Country</string>
     <string name="dial_code">Dial Code</string>
+    <string name="dial_code_not_found">Dial code not found.</string>
 
 
 
