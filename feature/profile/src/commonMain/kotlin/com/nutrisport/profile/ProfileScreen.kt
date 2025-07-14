@@ -22,6 +22,7 @@ import com.nutrisport.shared.Resources
 import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
+import com.nutrisport.shared.component.LoadingCard
 import com.nutrisport.shared.component.NotificationCard
 import com.nutrisport.shared.component.PrimaryButton
 import com.nutrisport.shared.component.ProfileForm
@@ -37,6 +38,7 @@ fun ProfileScreen(
     navigateBack: () -> Unit
 ) {
     val viewModel = koinViewModel<ProfileViewModel>()
+    val screenReady = viewModel.screenReady
     val screenState = viewModel.screenState
 
     Scaffold(
@@ -88,29 +90,27 @@ fun ProfileScreen(
                     bottom = 24.dp
                 )
         ) {
-            screenState.DisplayResult(
-                onLoading = {},
-                onSuccess = { state ->
+            screenReady.DisplayResult(
+                onLoading = { LoadingCard(Modifier.fillMaxSize()) },
+                onSuccess = {
                     Column(modifier = Modifier.fillMaxSize()) {
                         ProfileForm(
                             modifier = Modifier.weight(1f),
-                            country = state.country,
-                            onCountrySelect = { selectedCountry ->
-
-                            },
-                            firstName = state.firstName,
-                            onFirstNameChange = {},
-                            lastName = state.lastName,
-                            onLastNameChange = {},
-                            email = state.email,
-                            city = state.city,
-                            onCityChange = {},
-                            postalCode = state.postalCode,
-                            onPostalCodeChange = {},
-                            address = state.address,
-                            onAddressChange = {},
-                            phoneNumber = state.phoneNumber?.number,
-                            onPhoneNumberChange = {}
+                            country = screenState.country,
+                            onCountrySelect = viewModel::updateCountry,
+                            firstName = screenState.firstName,
+                            onFirstNameChange = viewModel::updateFirstName,
+                            lastName = screenState.lastName,
+                            onLastNameChange = viewModel::updateLastName,
+                            email = screenState.email,
+                            city = screenState.city,
+                            onCityChange = viewModel::updateCity,
+                            postalCode = screenState.postalCode,
+                            onPostalCodeChange = viewModel::updatePostalCode,
+                            address = screenState.address,
+                            onAddressChange = viewModel::updateAddress,
+                            phoneNumber = screenState.phoneNumber?.number,
+                            onPhoneNumberChange = viewModel::updatePhoneNumber
                         )
                         Spacer(modifier = Modifier.height(12.dp))
                         PrimaryButton(
@@ -128,7 +128,5 @@ fun ProfileScreen(
                 }
             )
         }
-
-
     }
 }

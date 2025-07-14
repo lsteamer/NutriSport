@@ -48,7 +48,7 @@ fun ProfileForm(
     address: String?,
     onAddressChange: (String) -> Unit,
     phoneNumber: String?,
-    onPhoneNumberChange: (String?) -> Unit,
+    onPhoneNumberChange: (String) -> Unit,
 ) {
     var showCountryDialog by remember { mutableStateOf(false) }
 
