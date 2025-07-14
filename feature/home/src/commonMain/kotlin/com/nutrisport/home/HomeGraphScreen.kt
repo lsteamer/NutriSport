@@ -142,7 +142,7 @@ fun HomeGraphScreen(
                                 targetState = selectedDestination
                             ) { destination ->
                                 Text(
-                                    text = destination.title,
+                                    text = stringResource(destination.title),
                                     fontFamily = BebasNeueFont(),
                                     fontSize = FontSize.LARGE,
                                     color = TextPrimary

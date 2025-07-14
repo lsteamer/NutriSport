@@ -41,11 +41,11 @@ fun ProfileForm(
     lastName: String,
     onLastNameChange: (String) -> Unit,
     email: String,
-    city: String,
+    city: String?,
     onCityChange: (String) -> Unit,
     postalCode: Int?,
     onPostalCodeChange: (Int?) -> Unit,
-    address: String,
+    address: String?,
     onAddressChange: (String) -> Unit,
     phoneNumber: String?,
     onPhoneNumberChange: (String?) -> Unit,
@@ -91,10 +91,10 @@ fun ProfileForm(
             enabled = false
         )
         CustomTextField(
-            value = city,
+            value = city ?: "",
             onValueChange = onCityChange,
             placeholder = stringResource(Res.string.city),
-            error = city.length !in 3..50
+            error = city?.length !in 3..50
         )
         CustomTextField(
             value = "${postalCode ?: ""}",
@@ -103,10 +103,10 @@ fun ProfileForm(
             error = postalCode.toString().length !in 3..7
         )
         CustomTextField(
-            value = address,
+            value = address ?: "",
             onValueChange = onAddressChange,
             placeholder = stringResource(Res.string.address),
-            error = address.length !in 3..50
+            error = address?.length !in 3..50
         )
         Row(
             modifier = Modifier.fillMaxWidth(),

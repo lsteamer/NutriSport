@@ -2,6 +2,7 @@ package com.nutrisport.profile
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.TopAppBar
@@ -12,10 +13,6 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.nutrisport.shared.BebasNeueFont
@@ -25,11 +22,13 @@ import com.nutrisport.shared.Resources
 import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
+import com.nutrisport.shared.component.NotificationCard
 import com.nutrisport.shared.component.PrimaryButton
 import com.nutrisport.shared.component.ProfileForm
-import com.nutrisport.shared.domain.Country
+import com.nutrisport.shared.util.DisplayResult
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,7 +36,8 @@ import org.jetbrains.compose.resources.stringResource
 fun ProfileScreen(
     navigateBack: () -> Unit
 ) {
-    var country by remember { mutableStateOf(Country.Mexico) }
+    val viewModel = koinViewModel<ProfileViewModel>()
+    val screenState = viewModel.screenState
 
     Scaffold(
         containerColor = Surface,
@@ -54,7 +54,7 @@ fun ProfileScreen(
 
                 },
                 navigationIcon = {
-                    IconButton(onClick = { navigateBack()}) {
+                    IconButton(onClick = { navigateBack() }) {
                         Icon(
                             painter = painterResource(Resources.Icon.BackArrow),
                             contentDescription = stringResource(Strings.backArrowIcon),
@@ -75,6 +75,7 @@ fun ProfileScreen(
     ) { padding ->
         Column(
             modifier = Modifier
+                .fillMaxSize()
                 .padding(
                     top = padding.calculateTopPadding(),
                     bottom = padding.calculateBottomPadding()
@@ -87,33 +88,45 @@ fun ProfileScreen(
                     bottom = 24.dp
                 )
         ) {
-            ProfileForm(
-                modifier = Modifier.weight(1f),
-                country = country,
-                onCountrySelect = { selectedCountry ->
-                    country = selectedCountry
-                },
-                firstName = "John",
-                onFirstNameChange = {},
-                lastName = "Doe",
-                onLastNameChange = {},
-                email = "james.c.mcreynolds@example-pet-store.com",
-                city = "New York",
-                onCityChange = {},
-                postalCode = 10001,
-                onPostalCodeChange = {},
-                address = "123 Main St",
-                onAddressChange = {},
-                phoneNumber = "",
-                onPhoneNumberChange = {}
-            )
-            Spacer(modifier = Modifier.height(12.dp))
-            PrimaryButton(
-                text = stringResource(Strings.update),
-                icon = Resources.Icon.Checkmark,
-                onClick = {}
-            )
+            screenState.DisplayResult(
+                onLoading = {},
+                onSuccess = { state ->
+                    Column(modifier = Modifier.fillMaxSize()) {
+                        ProfileForm(
+                            modifier = Modifier.weight(1f),
+                            country = state.country,
+                            onCountrySelect = { selectedCountry ->
 
+                            },
+                            firstName = state.firstName,
+                            onFirstNameChange = {},
+                            lastName = state.lastName,
+                            onLastNameChange = {},
+                            email = state.email,
+                            city = state.city,
+                            onCityChange = {},
+                            postalCode = state.postalCode,
+                            onPostalCodeChange = {},
+                            address = state.address,
+                            onAddressChange = {},
+                            phoneNumber = state.phoneNumber?.number,
+                            onPhoneNumberChange = {}
+                        )
+                        Spacer(modifier = Modifier.height(12.dp))
+                        PrimaryButton(
+                            text = stringResource(Strings.update),
+                            icon = Resources.Icon.Checkmark,
+                            onClick = {}
+                        )
+
+                    }
+                },
+                onError = { message ->
+                    NotificationCard(
+                        text = message
+                    )
+                }
+            )
         }
 
 

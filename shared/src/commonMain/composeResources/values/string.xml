@@ -12,7 +12,11 @@
     <string name="sign_in_cancelled">Sign in cancelled</string>
     <string name="user_not_available">User not available</string>
     <string name="error_while_creating_customer">Error while creating a customer : </string>
-    <string name="error_while_signing_out">Error while singing out : </string>
+    <string name="error_while_signing_out">Error while singing out: </string>
+    <string name="error_while_reading_customer_info">Error while reading a customer information: </string>
+    <string name="customer_does_not_exist">Queried customer does not exist</string>
+
+
     <string name="healthy_lifestyle">Healthy Lifestyle</string>
 
     <string name="drawer_item_icon">Drawer item icon</string>
@@ -26,11 +30,12 @@
     <string name="country_flag">Country flag image</string>
 
     <string name="content_animation">ContentAnimation</string>
-    <string name="customers">Customers</string>
+    <string name="customer">customer</string>
     <string name="unknown">Unknown</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
+    <string name="categories">Categories</string>
 
 
     <string name="first_name">First Name</string>
@@ -40,6 +45,15 @@
     <string name="postal_code">Postal Code</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
+
+    <string name="first_name_db">firstName</string>
+    <string name="last_name_db">lastName</string>
+    <string name="email_db">email</string>
+    <string name="city_db">city</string>
+    <string name="postal_code_db">postalCode</string>
+    <string name="address_db">address</string>
+    <string name="phone_number_db">phoneNumber</string>
+    <string name="cart_db">cart</string>
 
 
 

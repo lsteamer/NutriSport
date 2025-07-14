@@ -20,6 +20,7 @@ import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.IconSecondary
 import com.nutrisport.shared.SurfaceLighter
 import org.jetbrains.compose.resources.painterResource
+import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun BottomBar(
@@ -47,7 +48,7 @@ fun BottomBar(
                 Icon(
                     modifier = Modifier.clickable {onSelect(destination)},
                     painter = painterResource(destination.icon),
-                    contentDescription = "$destination.name Icon",
+                    contentDescription = stringResource(destination.title),
                     tint = animatedTint
                 )
   //          }

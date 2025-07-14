@@ -8,6 +8,9 @@ import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.FirebaseUser
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.channelFlow
+import kotlinx.coroutines.flow.collectLatest
 import org.jetbrains.compose.resources.getString
 
 class CustomerRepositoryImpl : CustomerRepository {
@@ -22,7 +25,7 @@ class CustomerRepositoryImpl : CustomerRepository {
     ) {
         try {
             if (user != null) {
-                val customerCollection = Firebase.firestore.collection(getString(Strings.customers))
+                val customerCollection = Firebase.firestore.collection(getString(Strings.customer))
                 val customer = Customer(
                     id = user.uid,
                     firstName = user.displayName?.split(" ")?.firstOrNull()
@@ -47,6 +50,40 @@ class CustomerRepositoryImpl : CustomerRepository {
         } catch (e: Exception) {
 
             onError(getString(Strings.errorUserCreation) + e.message)
+        }
+    }
+
+    override fun readCustomerFlow(): Flow<RequestState<Customer>> = channelFlow {
+        try {
+            val userId = getCurrentUserId()
+            if (userId != null) {
+                val database = Firebase.firestore
+                database.collection(collectionPath = getString(Strings.customer))
+                    .document(userId)
+                    .snapshots
+                    .collectLatest { document ->
+                        if (document.exists) {
+                            val customer = Customer(
+                                id = document.id,
+                                firstName = document.get(field = getString(Strings.firstName)),
+                                lastName = document.get(field = getString(Strings.lastName)),
+                                email = document.get(field = getString(Strings.email)),
+                                city = document.get(field = getString(Strings.city)),
+                                postalCode = document.get(field = getString(Strings.postalCode)),
+                                address = document.get(field = getString(Strings.address)),
+                                phoneNumber = document.get(field = getString(Strings.phoneNumber)),
+                                cart = document.get(field = getString(Strings.cart))
+                            )
+                            send(RequestState.Success(data = customer))
+                        } else {
+                            send(RequestState.Error(getString(Strings.customerDoesNotExist)))
+                        }
+                    }
+            } else {
+                send(RequestState.Error(getString(Strings.errorUserNotAvailable)))
+            }
+        } catch (e: Exception) {
+            send(RequestState.Error(getString(Strings.errorWhileReadingCustomer) + "${e.message}"))
         }
     }
 
