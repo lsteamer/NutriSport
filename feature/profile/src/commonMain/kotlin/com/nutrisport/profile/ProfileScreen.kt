@@ -23,8 +23,8 @@ import com.nutrisport.shared.Resources
 import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
+import com.nutrisport.shared.component.InfoCard
 import com.nutrisport.shared.component.LoadingCard
-import com.nutrisport.shared.component.NotificationCard
 import com.nutrisport.shared.component.PrimaryButton
 import com.nutrisport.shared.component.ProfileForm
 import com.nutrisport.shared.util.DisplayResult
@@ -144,8 +144,10 @@ fun ProfileScreen(
                         }
                     },
                     onError = { message ->
-                        NotificationCard(
-                            text = message
+                        InfoCard(
+                            image = Resources.Image.Cat,
+                            title = stringResource(Strings.error),
+                            subtitle = message,
                         )
                     }
                 )

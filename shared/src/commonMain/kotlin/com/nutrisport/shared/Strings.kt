@@ -12,6 +12,7 @@ import nutrisport.shared.generated.resources.customer
 import nutrisport.shared.generated.resources.customer_does_not_exist
 import nutrisport.shared.generated.resources.drawer_item_icon
 import nutrisport.shared.generated.resources.email_db
+import nutrisport.shared.generated.resources.error
 import nutrisport.shared.generated.resources.error_internet
 import nutrisport.shared.generated.resources.error_network
 import nutrisport.shared.generated.resources.error_unknown
@@ -48,6 +49,7 @@ object Strings {
     val pleaseWait = Res.string.please_wait
     val successfulUpdate = Res.string.successful_update
 
+    val error = Res.string.error
     val errorUnknown = Res.string.error_unknown
     val errorNetwork = Res.string.error_network
     val errorInternet = Res.string.error_internet

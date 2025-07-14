@@ -6,6 +6,7 @@
     <string name="sign_in_to_google">Sign in with Google</string>
     <string name="please_wait">Please wait...</string>
 
+    <string name="error">Error</string>
     <string name="error_unknown">Unknown error</string>
     <string name="error_network">Network error</string>
     <string name="error_internet">Internet connection unavailable</string>
@@ -34,6 +35,7 @@
     <string name="checkmark_icon">Checkmark Icon</string>
     <string name="back_arrow_icon">Back Arrow Icon</string>
     <string name="country_flag">Country flag image</string>
+    <string name="info_card_image">Info Card Image</string>
     <string name="content_animation">ContentAnimation</string>
 
 
