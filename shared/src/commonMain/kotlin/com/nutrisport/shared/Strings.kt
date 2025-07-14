@@ -18,6 +18,7 @@ import nutrisport.shared.generated.resources.error_unknown
 import nutrisport.shared.generated.resources.error_while_creating_customer
 import nutrisport.shared.generated.resources.error_while_reading_customer_info
 import nutrisport.shared.generated.resources.error_while_signing_out
+import nutrisport.shared.generated.resources.error_while_updating_a_customer
 import nutrisport.shared.generated.resources.first_name_db
 import nutrisport.shared.generated.resources.google_logo
 import nutrisport.shared.generated.resources.healthy_lifestyle
@@ -31,6 +32,7 @@ import nutrisport.shared.generated.resources.postal_code_db
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
+import nutrisport.shared.generated.resources.successful_update
 import nutrisport.shared.generated.resources.unknown
 import nutrisport.shared.generated.resources.update
 import nutrisport.shared.generated.resources.user_not_available
@@ -44,6 +46,7 @@ object Strings {
     val authSuccess = Res.string.auth_success
     val signIntoGoogle = Res.string.sign_in_to_google
     val pleaseWait = Res.string.please_wait
+    val successfulUpdate = Res.string.successful_update
 
     val errorUnknown = Res.string.error_unknown
     val errorNetwork = Res.string.error_network
@@ -55,6 +58,7 @@ object Strings {
     val errorWhileSigningOut = Res.string.error_while_signing_out
     val errorWhileReadingCustomer = Res.string.error_while_reading_customer_info
     val customerDoesNotExist = Res.string.customer_does_not_exist
+    val errorWhileUpdatingCustomer = Res.string.error_while_updating_a_customer
 
     val firstName = Res.string.first_name_db
     val lastName = Res.string.last_name_db

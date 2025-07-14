@@ -49,7 +49,7 @@ class CustomerRepositoryImpl : CustomerRepository {
 
         } catch (e: Exception) {
 
-            onError(getString(Strings.errorUserCreation) + e.message)
+            onError(getString(Strings.errorUserCreation, e.message ?: ""))
         }
     }
 
@@ -83,7 +83,41 @@ class CustomerRepositoryImpl : CustomerRepository {
                 send(RequestState.Error(getString(Strings.errorUserNotAvailable)))
             }
         } catch (e: Exception) {
-            send(RequestState.Error(getString(Strings.errorWhileReadingCustomer) + "${e.message}"))
+            send(RequestState.Error(getString(Strings.errorWhileReadingCustomer, e.message ?: "")))
+        }
+    }
+
+    override suspend fun updateCustomer(
+        customer: Customer,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        try {
+            val userId = getCurrentUserId()
+            if (userId != null) {
+                val firestore = Firebase.firestore
+                val customerCollection = firestore.collection(getString(Strings.customer))
+
+                val customerDocument = customerCollection.document(customer.id)
+
+                if (customerDocument.get().exists) {
+                    customerDocument.update(
+                        getString(Strings.firstName) to customer.firstName,
+                        getString(Strings.lastName) to customer.lastName,
+                        getString(Strings.city) to customer.city,
+                        getString(Strings.postalCode) to customer.postalCode,
+                        getString(Strings.address) to customer.address,
+                        getString(Strings.phoneNumber) to customer.phoneNumber
+                    )
+                    onSuccess()
+                } else {
+                    onError(getString(Strings.customerDoesNotExist))
+                }
+            } else {
+                onError(getString(Strings.errorUserNotAvailable))
+            }
+        } catch (e: Exception) {
+            onError(getString(Strings.errorWhileUpdatingCustomer, e.message ?: ""))
         }
     }
 
@@ -93,7 +127,7 @@ class CustomerRepositoryImpl : CustomerRepository {
             RequestState.Success(Unit)
             RequestState.Success(data = Unit)
         } catch (e: Exception) {
-            RequestState.Error(getString(Strings.errorWhileSigningOut) + e.message)
+            RequestState.Error(getString(Strings.errorWhileSigningOut, e.message ?: ""))
         }
     }
 }

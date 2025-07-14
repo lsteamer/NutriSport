@@ -5,19 +5,26 @@
     <string name="auth_success">Authentication successful!</string>
     <string name="sign_in_to_google">Sign in with Google</string>
     <string name="please_wait">Please wait...</string>
+
     <string name="error_unknown">Unknown error</string>
     <string name="error_network">Network error</string>
     <string name="error_internet">Internet connection unavailable</string>
     <string name="id_token_null">ID token is null</string>
     <string name="sign_in_cancelled">Sign in cancelled</string>
     <string name="user_not_available">User not available</string>
-    <string name="error_while_creating_customer">Error while creating a customer : </string>
-    <string name="error_while_signing_out">Error while singing out: </string>
-    <string name="error_while_reading_customer_info">Error while reading a customer information: </string>
-    <string name="customer_does_not_exist">Queried customer does not exist</string>
-
-
+    <string name="error_while_creating_customer">Error while creating a customer: %1$s</string>
+    <string name="error_while_signing_out">Error while singing out: %1$s</string>
+    <string name="error_while_reading_customer_info">Error while reading a customer information:  %1$s</string>
+    <string name="customer_does_not_exist">Customer does not exist</string>
+    <string name="error_while_updating_a_customer">Error while updating customer: %1$s</string>
     <string name="healthy_lifestyle">Healthy Lifestyle</string>
+    <string name="pick_country">Pick a Country</string>
+    <string name="dial_code">Dial Code</string>
+    <string name="dial_code_not_found">Dial code not found.</string>
+    <string name="my_profile">My Profile</string>
+    <string name="successful_update">Successfully updated!</string>
+
+
 
     <string name="drawer_item_icon">Drawer item icon</string>
     <string name="text_field_icon">Text Field icon</string>
@@ -26,16 +33,19 @@
     <string name="button_icon">Button Icon</string>
     <string name="checkmark_icon">Checkmark Icon</string>
     <string name="back_arrow_icon">Back Arrow Icon</string>
-
     <string name="country_flag">Country flag image</string>
-
     <string name="content_animation">ContentAnimation</string>
+
+
+
     <string name="customer">customer</string>
     <string name="unknown">Unknown</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
     <string name="update">Update</string>
     <string name="categories">Categories</string>
+
+
 
 
     <string name="first_name">First Name</string>
@@ -46,6 +56,9 @@
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
 
+
+
+
     <string name="first_name_db">firstName</string>
     <string name="last_name_db">lastName</string>
     <string name="email_db">email</string>
@@ -54,12 +67,4 @@
     <string name="address_db">address</string>
     <string name="phone_number_db">phoneNumber</string>
     <string name="cart_db">cart</string>
-
-
-
-    <string name="pick_country">Pick a Country</string>
-    <string name="dial_code">Dial Code</string>
-    <string name="dial_code_not_found">Dial code not found.</string>
-    <string name="my_profile">My Profile</string>
-
 </resources>

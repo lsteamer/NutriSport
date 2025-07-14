@@ -7,14 +7,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nutrisport.data.domain.CustomerRepository
 import com.nutrisport.shared.domain.Country
+import com.nutrisport.shared.domain.Customer
 import com.nutrisport.shared.domain.PhoneNumber
 import com.nutrisport.shared.util.RequestState
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 data class ProfileScreenState(
+    val id: String = "",
     val firstName: String = "",
     val lastName: String = "",
     val email: String = "",
@@ -28,23 +28,28 @@ data class ProfileScreenState(
 class ProfileViewModel(
     private val customerRepository: CustomerRepository
 ) : ViewModel() {
-    private val customer = customerRepository.readCustomerFlow()
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = RequestState.Loading
-        )
 
     var screenReady: RequestState<Unit> by mutableStateOf(RequestState.Loading)
     var screenState: ProfileScreenState by mutableStateOf(ProfileScreenState())
         private set
 
+    val isFormValid: Boolean
+        get() = with(screenState) {
+            firstName.length in 3..50 &&
+                    lastName.length in 3..50 &&
+                    city?.length in 3..50 &&
+                    postalCode?.toString()?.length in 3..7 &&
+                    address?.length in 3..50 &&
+                    phoneNumber?.number?.length in 3..17
+        }
+
     init {
         viewModelScope.launch {
-            customer.collectLatest { data ->
+            customerRepository.readCustomerFlow().collectLatest { data ->
                 if (data.isSuccess()) {
                     val fetchedCustomer = data.getSuccessData()
                     screenState = ProfileScreenState(
+                        id = fetchedCustomer.id,
                         firstName = fetchedCustomer.firstName,
                         lastName = fetchedCustomer.lastName,
                         email = fetchedCustomer.email,
@@ -64,31 +69,49 @@ class ProfileViewModel(
         }
     }
 
-    fun updateFirstName(value: String) {
+    fun updateCustomer(
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        viewModelScope.launch {
+            customerRepository.updateCustomer(
+                customer = screenState.toCustomer(),
+                onSuccess = onSuccess,
+                onError = onError
+            )
+        }
+    }
+
+    fun changeFirstName(value: String) {
         screenState = screenState.copy(firstName = value)
     }
 
-    fun updateLastName(value: String) {
+    fun changeLastName(value: String) {
         screenState = screenState.copy(lastName = value)
     }
 
-    fun updateCity(value: String) {
+    fun changeCity(value: String) {
         screenState = screenState.copy(city = value)
     }
 
-    fun updatePostalCode(value: Int?) {
+    fun changePostalCode(value: Int?) {
         screenState = screenState.copy(postalCode = value)
     }
 
-    fun updateAddress(value: String) {
+    fun changeAddress(value: String) {
         screenState = screenState.copy(address = value)
     }
 
     fun updateCountry(value: Country) {
-        screenState = screenState.copy(country = value)
+        screenState = screenState.copy(
+            country = value,
+            phoneNumber = screenState.phoneNumber?.copy(
+                dialCode = value.dialCode
+            )
+        )
     }
 
-    fun updatePhoneNumber(value: String) {
+    fun changePhoneNumber(value: String) {
         screenState =
             screenState
                 .copy(
@@ -97,7 +120,18 @@ class ProfileViewModel(
                         number = value
                     )
                 )
+    }
 
-
+    private fun ProfileScreenState.toCustomer(): Customer {
+        return Customer(
+            id = id,
+            firstName = firstName,
+            lastName = lastName,
+            email = email,
+            city = city,
+            postalCode = postalCode,
+            address = address,
+            phoneNumber = phoneNumber
+        )
     }
 }
