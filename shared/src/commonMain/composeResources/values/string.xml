@@ -6,6 +6,8 @@
     <string name="sign_in_to_google">Sign in with Google</string>
     <string name="please_wait">Please wait...</string>
 
+
+
     <string name="error">Error</string>
     <string name="error_unknown">Unknown error</string>
     <string name="error_network">Network error</string>
@@ -24,6 +26,7 @@
     <string name="dial_code_not_found">Dial code not found.</string>
     <string name="my_profile">My Profile</string>
     <string name="successful_update">Successfully updated!</string>
+    <string name="admin_panel">Admin Panel</string>
 
 
 
@@ -34,6 +37,8 @@
     <string name="button_icon">Button Icon</string>
     <string name="checkmark_icon">Checkmark Icon</string>
     <string name="back_arrow_icon">Back Arrow Icon</string>
+    <string name="search_icon">Search Icon</string>
+    <string name="add_icon">Add Icon</string>
     <string name="country_flag">Country flag image</string>
     <string name="info_card_image">Info Card Image</string>
     <string name="content_animation">ContentAnimation</string>
@@ -49,7 +54,6 @@
 
 
 
-
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
     <string name="email">Email</string>
@@ -57,7 +61,6 @@
     <string name="postal_code">Postal Code</string>
     <string name="address">Address</string>
     <string name="phone_number">Phone Number</string>
-
 
 
 
@@ -69,4 +72,13 @@
     <string name="address_db">address</string>
     <string name="phone_number_db">phoneNumber</string>
     <string name="cart_db">cart</string>
+
+
+
+    <string name="protein">Protein</string>
+    <string name="creatine">Creatine</string>
+    <string name="preworkout">PreWorkout</string>
+    <string name="grainers">Grainers</string>
+    <string name="accessories">Accessories</string>
+
 </resources>

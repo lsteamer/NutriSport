@@ -65,7 +65,8 @@ import rememberMessageBarState
 @Composable
 fun HomeGraphScreen(
     navigateToAuth: () -> Unit,
-    navigateToProfile: () -> Unit
+    navigateToProfile: () -> Unit,
+    navigateToAdminPanel: () -> Unit
 ) {
     val navController = rememberNavController()
     val currentRoute = navController.currentBackStackEntryAsState()
@@ -120,7 +121,7 @@ fun HomeGraphScreen(
                 )
             },
             onContactUsClick = {},
-            onAdminPanelClick = {}
+            onAdminPanelClick = navigateToAdminPanel
         )
         Box(
             modifier = Modifier

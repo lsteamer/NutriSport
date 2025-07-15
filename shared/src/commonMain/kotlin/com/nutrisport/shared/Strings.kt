@@ -1,7 +1,9 @@
 package com.nutrisport.shared
 
 import nutrisport.shared.generated.resources.Res
+import nutrisport.shared.generated.resources.add_icon
 import nutrisport.shared.generated.resources.address_db
+import nutrisport.shared.generated.resources.admin_panel
 import nutrisport.shared.generated.resources.app_name
 import nutrisport.shared.generated.resources.auth_success
 import nutrisport.shared.generated.resources.back_arrow_icon
@@ -30,6 +32,7 @@ import nutrisport.shared.generated.resources.my_profile
 import nutrisport.shared.generated.resources.phone_number_db
 import nutrisport.shared.generated.resources.please_wait
 import nutrisport.shared.generated.resources.postal_code_db
+import nutrisport.shared.generated.resources.search_icon
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
@@ -40,7 +43,6 @@ import nutrisport.shared.generated.resources.user_not_available
 
 object Strings {
     val appName = Res.string.app_name
-
     val brandName = Res.string.brand_name
 
     val signInToContinue = Res.string.sign_in_to_continue
@@ -48,6 +50,7 @@ object Strings {
     val signIntoGoogle = Res.string.sign_in_to_google
     val pleaseWait = Res.string.please_wait
     val successfulUpdate = Res.string.successful_update
+
 
     val error = Res.string.error
     val errorUnknown = Res.string.error_unknown
@@ -62,6 +65,7 @@ object Strings {
     val customerDoesNotExist = Res.string.customer_does_not_exist
     val errorWhileUpdatingCustomer = Res.string.error_while_updating_a_customer
 
+
     val firstName = Res.string.first_name_db
     val lastName = Res.string.last_name_db
     val email = Res.string.email_db
@@ -73,15 +77,18 @@ object Strings {
 
     val healthyLifestyle = Res.string.healthy_lifestyle
 
+
     val drawerItemIcon = Res.string.drawer_item_icon
     val menuIcon = Res.string.menu_icon
     val googleLogo = Res.string.google_logo
     val backArrowIcon = Res.string.back_arrow_icon
-
+    val searchIcon = Res.string.search_icon
+    val addIcon = Res.string.add_icon
 
     val customer = Res.string.customer
     val unknown = Res.string.unknown
     val update = Res.string.update
 
     val myProfile = Res.string.my_profile
+    val adminPanel = Res.string.admin_panel
 }
