@@ -2,6 +2,7 @@ package com.nutrisport.shared
 
 import nutrisport.shared.generated.resources.Res
 import nutrisport.shared.generated.resources.add_icon
+import nutrisport.shared.generated.resources.add_new_product
 import nutrisport.shared.generated.resources.address_db
 import nutrisport.shared.generated.resources.admin_panel
 import nutrisport.shared.generated.resources.app_name
@@ -12,7 +13,9 @@ import nutrisport.shared.generated.resources.cart_db
 import nutrisport.shared.generated.resources.city_db
 import nutrisport.shared.generated.resources.customer
 import nutrisport.shared.generated.resources.customer_does_not_exist
+import nutrisport.shared.generated.resources.description
 import nutrisport.shared.generated.resources.drawer_item_icon
+import nutrisport.shared.generated.resources.edit_product
 import nutrisport.shared.generated.resources.email_db
 import nutrisport.shared.generated.resources.error
 import nutrisport.shared.generated.resources.error_internet
@@ -23,23 +26,30 @@ import nutrisport.shared.generated.resources.error_while_reading_customer_info
 import nutrisport.shared.generated.resources.error_while_signing_out
 import nutrisport.shared.generated.resources.error_while_updating_a_customer
 import nutrisport.shared.generated.resources.first_name_db
+import nutrisport.shared.generated.resources.flavors
 import nutrisport.shared.generated.resources.google_logo
 import nutrisport.shared.generated.resources.healthy_lifestyle
 import nutrisport.shared.generated.resources.id_token_null
 import nutrisport.shared.generated.resources.last_name_db
 import nutrisport.shared.generated.resources.menu_icon
 import nutrisport.shared.generated.resources.my_profile
+import nutrisport.shared.generated.resources.new_product
 import nutrisport.shared.generated.resources.phone_number_db
 import nutrisport.shared.generated.resources.please_wait
+import nutrisport.shared.generated.resources.plus_icon
 import nutrisport.shared.generated.resources.postal_code_db
+import nutrisport.shared.generated.resources.price
+import nutrisport.shared.generated.resources.protein
 import nutrisport.shared.generated.resources.search_icon
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
 import nutrisport.shared.generated.resources.successful_update
+import nutrisport.shared.generated.resources.title
 import nutrisport.shared.generated.resources.unknown
 import nutrisport.shared.generated.resources.update
 import nutrisport.shared.generated.resources.user_not_available
+import nutrisport.shared.generated.resources.weight
 
 object Strings {
     val appName = Res.string.app_name
@@ -84,6 +94,7 @@ object Strings {
     val backArrowIcon = Res.string.back_arrow_icon
     val searchIcon = Res.string.search_icon
     val addIcon = Res.string.add_icon
+    val plusIcon = Res.string.plus_icon
 
     val customer = Res.string.customer
     val unknown = Res.string.unknown
@@ -91,4 +102,14 @@ object Strings {
 
     val myProfile = Res.string.my_profile
     val adminPanel = Res.string.admin_panel
+
+    val newProduct = Res.string.new_product
+    val editProduct = Res.string.edit_product
+    val title = Res.string.title
+    val protein = Res.string.protein
+    val description = Res.string.description
+    val weight = Res.string.weight
+    val price = Res.string.price
+    val flavors = Res.string.flavors
+    val addNewProduct = Res.string.add_new_product
 }

@@ -42,6 +42,7 @@
     <string name="country_flag">Country flag image</string>
     <string name="info_card_image">Info Card Image</string>
     <string name="content_animation">ContentAnimation</string>
+    <string name="plus_icon">Plus Icon</string>
 
 
 
@@ -80,5 +81,16 @@
     <string name="preworkout">PreWorkout</string>
     <string name="grainers">Grainers</string>
     <string name="accessories">Accessories</string>
+
+
+
+    <string name="new_product">New Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="weight">Weight</string>
+    <string name="flavors">Flavors</string>
+    <string name="price">Price</string>
+    <string name="add_new_product">Add New Product</string>
 
 </resources>
