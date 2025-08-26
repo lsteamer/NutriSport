@@ -31,7 +31,6 @@ import com.nutrisport.shared.Alpha
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.Resources
-import com.nutrisport.shared.Strings
 import com.nutrisport.shared.Surface
 import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.TextSecondary
