@@ -29,11 +29,11 @@ import org.jetbrains.compose.resources.stringResource
 @Composable
 fun AlertTextField(
     modifier: Modifier = Modifier,
-    text :  String,
+    text: String,
     icon: DrawableResource? = null,
-    onClick: ( ) -> Unit
-){
-    Row (
+    onClick: () -> Unit
+) {
+    Row(
         modifier = modifier
             .background(SurfaceLighter)
             .border(
@@ -44,24 +44,25 @@ fun AlertTextField(
             .clip(RoundedCornerShape(6.dp))
             .clickable { onClick() }
             .padding(
-                vertical  = 16.dp,
+                vertical = 16.dp,
                 horizontal = 16.dp
             ),
         verticalAlignment = Alignment.CenterVertically
-    ){
-        if(icon != null){
+    ) {
+        if (icon != null) {
             Image(
                 modifier = Modifier.size(14.dp),
                 painter = painterResource(icon),
                 contentDescription = stringResource(Res.string.text_field_icon)
             )
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = text,
-                fontSize = FontSize.REGULAR,
-                color = TextPrimary
-            )
         }
+        Spacer(modifier = Modifier.width(8.dp))
+        Text(
+            text = text,
+            fontSize = FontSize.REGULAR,
+            color = TextPrimary
+        )
+
 
     }
 

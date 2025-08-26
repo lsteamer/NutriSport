@@ -1,6 +1,7 @@
 package com.nutrisport.manage_product
 
 import ContentWithMessageBar
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -25,6 +26,10 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -42,6 +47,8 @@ import com.nutrisport.shared.TextPrimary
 import com.nutrisport.shared.component.AlertTextField
 import com.nutrisport.shared.component.CustomTextField
 import com.nutrisport.shared.component.PrimaryButton
+import com.nutrisport.shared.component.dialog.CategoriesDialog
+import com.nutrisport.shared.domain.ProductCategory
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import rememberMessageBarState
@@ -54,6 +61,21 @@ fun ManageProductScreen(
 ) {
 
     val messageBarState = rememberMessageBarState()
+    var category by remember { mutableStateOf(ProductCategory.Protein) }
+    var showCategoriesDialog by remember { mutableStateOf(false) }
+
+    AnimatedVisibility(
+        visible = showCategoriesDialog
+    ) {
+        CategoriesDialog(
+            category = category,
+            onDismiss = { showCategoriesDialog = false },
+            onConfirm = { selectedCategory ->
+                category = selectedCategory
+                showCategoriesDialog = false
+            }
+        )
+    }
 
     Scaffold(
         containerColor = Surface,
@@ -127,12 +149,12 @@ fun ManageProductScreen(
                                 shape = RoundedCornerShape(size = 12.dp)
                             )
                             .background(SurfaceLighter)
-                            .clickable {  },
+                            .clickable { },
                         contentAlignment = Alignment.Center
-                    ){
+                    ) {
                         Icon(
                             modifier = Modifier.size(24.dp),
-                            painter =  painterResource(Resources.Icon.Plus),
+                            painter = painterResource(Resources.Icon.Plus),
                             contentDescription = stringResource(Strings.plusIcon),
                             tint = IconPrimary
                         )
@@ -153,7 +175,7 @@ fun ManageProductScreen(
                     AlertTextField(
                         modifier = Modifier.fillMaxWidth(),
                         text = stringResource(Strings.protein),
-                        onClick = {}
+                        onClick = { showCategoriesDialog = true }
                     )
                     CustomTextField(
                         value = "",

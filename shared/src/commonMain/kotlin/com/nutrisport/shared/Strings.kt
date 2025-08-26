@@ -10,6 +10,7 @@ import nutrisport.shared.generated.resources.auth_success
 import nutrisport.shared.generated.resources.back_arrow_icon
 import nutrisport.shared.generated.resources.brand_name
 import nutrisport.shared.generated.resources.cart_db
+import nutrisport.shared.generated.resources.checkmark_icon
 import nutrisport.shared.generated.resources.city_db
 import nutrisport.shared.generated.resources.customer
 import nutrisport.shared.generated.resources.customer_does_not_exist
@@ -35,6 +36,7 @@ import nutrisport.shared.generated.resources.menu_icon
 import nutrisport.shared.generated.resources.my_profile
 import nutrisport.shared.generated.resources.new_product
 import nutrisport.shared.generated.resources.phone_number_db
+import nutrisport.shared.generated.resources.pick_a_category
 import nutrisport.shared.generated.resources.please_wait
 import nutrisport.shared.generated.resources.plus_icon
 import nutrisport.shared.generated.resources.postal_code_db
@@ -95,6 +97,7 @@ object Strings {
     val searchIcon = Res.string.search_icon
     val addIcon = Res.string.add_icon
     val plusIcon = Res.string.plus_icon
+    val checkmarkIcon = Res.string.checkmark_icon
 
     val customer = Res.string.customer
     val unknown = Res.string.unknown
@@ -112,4 +115,6 @@ object Strings {
     val price = Res.string.price
     val flavors = Res.string.flavors
     val addNewProduct = Res.string.add_new_product
+
+   val pickNewCategory = Res.string.pick_a_category
 }

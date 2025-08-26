@@ -93,4 +93,6 @@
     <string name="price">Price</string>
     <string name="add_new_product">Add New Product</string>
 
+    <string name="pick_a_category">Pick a Category</string>
+
 </resources>
