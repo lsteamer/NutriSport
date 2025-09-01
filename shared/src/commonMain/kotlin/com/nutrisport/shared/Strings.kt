@@ -22,6 +22,7 @@ import nutrisport.shared.generated.resources.error_internet
 import nutrisport.shared.generated.resources.error_network
 import nutrisport.shared.generated.resources.error_unknown
 import nutrisport.shared.generated.resources.error_while_creating_customer
+import nutrisport.shared.generated.resources.error_while_creating_product
 import nutrisport.shared.generated.resources.error_while_reading_customer_info
 import nutrisport.shared.generated.resources.error_while_signing_out
 import nutrisport.shared.generated.resources.error_while_updating_a_customer
@@ -39,6 +40,8 @@ import nutrisport.shared.generated.resources.please_wait
 import nutrisport.shared.generated.resources.plus_icon
 import nutrisport.shared.generated.resources.postal_code_db
 import nutrisport.shared.generated.resources.price
+import nutrisport.shared.generated.resources.product
+import nutrisport.shared.generated.resources.product_successfully_added
 import nutrisport.shared.generated.resources.protein
 import nutrisport.shared.generated.resources.search_icon
 import nutrisport.shared.generated.resources.sign_in_cancelled
@@ -74,6 +77,7 @@ object Strings {
     val errorWhileReadingCustomer = Res.string.error_while_reading_customer_info
     val customerDoesNotExist = Res.string.customer_does_not_exist
     val errorWhileUpdatingCustomer = Res.string.error_while_updating_a_customer
+    val errorWhileCreatingProduct = Res.string.error_while_creating_product
 
 
     val firstName = Res.string.first_name_db
@@ -97,6 +101,7 @@ object Strings {
     val plusIcon = Res.string.plus_icon
 
     val customer = Res.string.customer
+    val product = Res.string.product
     val unknown = Res.string.unknown
     val update = Res.string.update
 
@@ -112,5 +117,7 @@ object Strings {
     val price = Res.string.price
     val flavors = Res.string.flavors
     val addNewProduct = Res.string.add_new_product
+
+    val productSuccessfulyAdded = Res.string.product_successfully_added
 
 }

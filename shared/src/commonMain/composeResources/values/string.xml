@@ -17,6 +17,7 @@
     <string name="user_not_available">User not available</string>
     <string name="error_while_creating_customer">Error while creating a customer: %1$s</string>
     <string name="error_while_signing_out">Error while singing out: %1$s</string>
+    <string name="error_while_creating_product">Error while creating a new Product: %1$s</string>
     <string name="error_while_reading_customer_info">Error while reading a customer information:  %1$s</string>
     <string name="customer_does_not_exist">Customer does not exist</string>
     <string name="error_while_updating_a_customer">Error while updating customer: %1$s</string>
@@ -24,10 +25,11 @@
     <string name="pick_country">Pick a Country</string>
     <string name="dial_code">Dial Code</string>
     <string name="dial_code_not_found">Dial code not found.</string>
+
+
     <string name="my_profile">My Profile</string>
     <string name="successful_update">Successfully updated!</string>
     <string name="admin_panel">Admin Panel</string>
-
 
 
     <string name="drawer_item_icon">Drawer item icon</string>
@@ -47,6 +49,7 @@
 
 
     <string name="customer">customer</string>
+    <string name="product">product</string>
     <string name="unknown">Unknown</string>
     <string name="confirm">Confirm</string>
     <string name="cancel">Cancel</string>
@@ -94,5 +97,6 @@
     <string name="add_new_product">Add New Product</string>
 
     <string name="pick_a_category">Pick a Category</string>
+    <string name="product_successfully_added">Product successfully added!</string>
 
 </resources>

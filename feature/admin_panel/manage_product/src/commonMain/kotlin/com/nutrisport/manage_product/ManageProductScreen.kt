@@ -48,9 +48,9 @@ import com.nutrisport.shared.component.AlertTextField
 import com.nutrisport.shared.component.CustomTextField
 import com.nutrisport.shared.component.PrimaryButton
 import com.nutrisport.shared.component.dialog.CategoriesDialog
-import com.nutrisport.shared.domain.ProductCategory
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
+import org.koin.compose.viewmodel.koinViewModel
 import rememberMessageBarState
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -61,17 +61,21 @@ fun ManageProductScreen(
 ) {
 
     val messageBarState = rememberMessageBarState()
-    var category by remember { mutableStateOf(ProductCategory.Protein) }
+    val viewModel = koinViewModel<ManageProductViewModel>()
+    val screenState = viewModel.screenState
+    val isFormValid = viewModel.isFormValid
     var showCategoriesDialog by remember { mutableStateOf(false) }
+
+    val productSuccessfulyAdded = stringResource(Strings.productSuccessfulyAdded)
 
     AnimatedVisibility(
         visible = showCategoriesDialog
     ) {
         CategoriesDialog(
-            category = category,
+            category = screenState.category,
             onDismiss = { showCategoriesDialog = false },
             onConfirm = { selectedCategory ->
-                category = selectedCategory
+                viewModel.updateCategory(selectedCategory)
                 showCategoriesDialog = false
             }
         )
@@ -160,40 +164,47 @@ fun ManageProductScreen(
                         )
                     }
                     CustomTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = screenState.title,
+                        onValueChange = viewModel::updateTitle,
                         placeholder = stringResource(Strings.title)
                     )
 
                     CustomTextField(
                         modifier = Modifier.height(168.dp),
-                        value = "",
-                        onValueChange = {},
+                        value = screenState.description,
+                        onValueChange = viewModel::updateDescription,
                         placeholder = stringResource(Strings.description),
                         expanded = true
                     )
                     AlertTextField(
                         modifier = Modifier.fillMaxWidth(),
-                        text = stringResource(Strings.protein),
+                        text = stringResource(screenState.category.title),
                         onClick = { showCategoriesDialog = true }
                     )
                     CustomTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = "${screenState.weight ?: ""}",
+                        onValueChange = { viewModel.updateWeight(it.toIntOrNull() ?: 0) },
                         placeholder = stringResource(Strings.weight),
                         keyboardOptions = KeyboardOptions(
                             keyboardType = KeyboardType.Number
                         )
                     )
                     CustomTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = screenState.flavors,
+                        onValueChange = viewModel::updateFlavors,
                         placeholder = stringResource(Strings.flavors),
                     )
                     CustomTextField(
-                        value = "",
-                        onValueChange = {},
+                        value = screenState.price.toString(),
+                        onValueChange = { value ->
+                            if (value.isEmpty() || value.toDoubleOrNull() != null) {
+                                viewModel.updatePrice(value.toDouble())
+                            }
+                        },
                         placeholder = stringResource(Strings.price),
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Number
+                        )
                     )
                     Spacer(modifier = Modifier.height(24.dp))
                 }
@@ -202,7 +213,18 @@ fun ManageProductScreen(
                     else stringResource(Strings.update),
                     icon = if (id == null) Resources.Icon.Plus
                     else Resources.Icon.Checkmark,
-                    onClick = {}
+                    enabled = isFormValid,
+                    onClick = {
+                        messageBarState.addSuccess("some some")
+                        viewModel.createNewProduct(
+                            onSuccess = {
+                                messageBarState.addSuccess(productSuccessfulyAdded)
+                            },
+                            onError = { message ->
+                                messageBarState.addError(message)
+                            }
+                        )
+                    }
                 )
 
             }
