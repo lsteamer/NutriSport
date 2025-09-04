@@ -6,7 +6,12 @@ import com.nutrisport.shared.domain.Product
 import dev.gitlive.firebase.Firebase
 import dev.gitlive.firebase.auth.auth
 import dev.gitlive.firebase.firestore.firestore
+import dev.gitlive.firebase.storage.File
+import dev.gitlive.firebase.storage.storage
+import kotlinx.coroutines.withTimeout
 import org.jetbrains.compose.resources.getString
+import kotlin.uuid.ExperimentalUuidApi
+import kotlin.uuid.Uuid
 
 class AdminRepositoryImpl : AdminRepository {
     override fun getCurrentUserID() = Firebase.auth.currentUser?.uid
@@ -21,7 +26,7 @@ class AdminRepositoryImpl : AdminRepository {
             if (currentUserId != null) {
                 val firestore = Firebase.firestore
                 val productCollection =
-                    firestore.collection(collectionPath = "product")
+                    firestore.collection(collectionPath = getString(Strings.product))
                 productCollection.document(product.id).set(product.title.lowercase())
                 onSuccess()
             } else {
@@ -30,5 +35,21 @@ class AdminRepositoryImpl : AdminRepository {
         } catch (e: Exception) {
             onError(getString(Strings.errorWhileCreatingProduct, e.message ?: ""))
         }
+    }
+
+    @ExperimentalUuidApi
+    override suspend fun uploadImageToStorage(file: File): String? {
+        return if (getCurrentUserID() != null) {
+            val storage = Firebase.storage.reference
+            val imagePath = storage.child(path = "images/${Uuid.random().toHexString()}")
+            try {
+                withTimeout(timeMillis = 20000L) {
+                    imagePath.putFile(file)
+                    imagePath.getDownloadUrl()
+                }
+            } catch (e: Exception) {
+                null
+            }
+        } else null
     }
 }

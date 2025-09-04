@@ -25,6 +25,9 @@
     <string name="pick_country">Pick a Country</string>
     <string name="dial_code">Dial Code</string>
     <string name="dial_code_not_found">Dial code not found.</string>
+    <string name="file_is_null_error_selecting_image">File is null. Error while selecting an image.</string>
+    <string name="failed_to_retrieve_image_url">Failed to retrieve a download URL after the upload.</string>
+    <string name="error_while_uploading">Error while uploading: </string>
 
 
     <string name="my_profile">My Profile</string>
@@ -98,5 +101,9 @@
 
     <string name="pick_a_category">Pick a Category</string>
     <string name="product_successfully_added">Product successfully added!</string>
+
+    <string name="try_again">Try again</string>
+    <string name="product_content_image">Product Content Image</string>
+    <string name="thumbnail_uploaded">Thumbnail uploaded successfully</string>
 
 </resources>

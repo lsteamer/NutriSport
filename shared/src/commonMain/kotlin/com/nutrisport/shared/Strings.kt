@@ -26,6 +26,9 @@ import nutrisport.shared.generated.resources.error_while_creating_product
 import nutrisport.shared.generated.resources.error_while_reading_customer_info
 import nutrisport.shared.generated.resources.error_while_signing_out
 import nutrisport.shared.generated.resources.error_while_updating_a_customer
+import nutrisport.shared.generated.resources.error_while_uploading
+import nutrisport.shared.generated.resources.failed_to_retrieve_image_url
+import nutrisport.shared.generated.resources.file_is_null_error_selecting_image
 import nutrisport.shared.generated.resources.first_name_db
 import nutrisport.shared.generated.resources.flavors
 import nutrisport.shared.generated.resources.google_logo
@@ -41,6 +44,7 @@ import nutrisport.shared.generated.resources.plus_icon
 import nutrisport.shared.generated.resources.postal_code_db
 import nutrisport.shared.generated.resources.price
 import nutrisport.shared.generated.resources.product
+import nutrisport.shared.generated.resources.product_content_image
 import nutrisport.shared.generated.resources.product_successfully_added
 import nutrisport.shared.generated.resources.protein
 import nutrisport.shared.generated.resources.search_icon
@@ -48,7 +52,9 @@ import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
 import nutrisport.shared.generated.resources.successful_update
+import nutrisport.shared.generated.resources.thumbnail_uploaded
 import nutrisport.shared.generated.resources.title
+import nutrisport.shared.generated.resources.try_again
 import nutrisport.shared.generated.resources.unknown
 import nutrisport.shared.generated.resources.update
 import nutrisport.shared.generated.resources.user_not_available
@@ -78,6 +84,9 @@ object Strings {
     val customerDoesNotExist = Res.string.customer_does_not_exist
     val errorWhileUpdatingCustomer = Res.string.error_while_updating_a_customer
     val errorWhileCreatingProduct = Res.string.error_while_creating_product
+    val errorWhileSelectingImage = Res.string.file_is_null_error_selecting_image
+    val failedToRetrieveImageUrl = Res.string.failed_to_retrieve_image_url
+    val errorWhileUploading = Res.string.error_while_uploading
 
 
     val firstName = Res.string.first_name_db
@@ -118,6 +127,10 @@ object Strings {
     val flavors = Res.string.flavors
     val addNewProduct = Res.string.add_new_product
 
-    val productSuccessfulyAdded = Res.string.product_successfully_added
+    val productSuccessfullyAdded = Res.string.product_successfully_added
+
+    val tryAgain = Res.string.try_again
+    val productContentImage = Res.string.product_content_image
+    val thumbnailUploadedSuccessfully = Res.string.thumbnail_uploaded
 
 }
