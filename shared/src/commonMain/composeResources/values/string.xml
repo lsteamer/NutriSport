@@ -22,7 +22,7 @@
     <string name="customer_does_not_exist">Customer does not exist</string>
     <string name="error_while_updating_a_customer">Error while updating customer: %1$s</string>
     <string name="healthy_lifestyle">Healthy Lifestyle</string>
-    <string name="pick_country">Pick a Country</string>
+    <string name="pick_country">Select a Country</string>
     <string name="dial_code">Dial Code</string>
     <string name="dial_code_not_found">Dial code not found.</string>
     <string name="file_is_null_error_selecting_image">File is null. Error while selecting an image.</string>
@@ -99,7 +99,7 @@
     <string name="price">Price</string>
     <string name="add_new_product">Add New Product</string>
 
-    <string name="pick_a_category">Pick a Category</string>
+    <string name="pick_a_category">Select a Category</string>
     <string name="product_successfully_added">Product successfully added!</string>
 
     <string name="try_again">Try again</string>
