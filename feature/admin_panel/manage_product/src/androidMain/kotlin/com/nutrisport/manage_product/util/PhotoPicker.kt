@@ -24,14 +24,16 @@ actual class PhotoPicker {
         val pickMedia = rememberLauncherForActivityResult(
             contract = ActivityResultContracts.PickVisualMedia()
         ) { uri ->
-            uri?.let { onImageSelect(File(uri)) } ?: onImageSelect(null)
+            uri?.let { onImageSelect(File(it)) } ?: onImageSelect(null)
             openPhotoPicker.value = false
         }
 
         LaunchedEffect(openPhotoPickerState) {
-            if(openPhotoPickerState){
-                PickVisualMediaRequest(
-                    ActivityResultContracts.PickVisualMedia.ImageOnly
+            if (openPhotoPickerState) {
+                pickMedia.launch(
+                    PickVisualMediaRequest(
+                        ActivityResultContracts.PickVisualMedia.ImageOnly
+                    )
                 )
             }
         }
