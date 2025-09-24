@@ -23,6 +23,7 @@ import nutrisport.shared.generated.resources.error_network
 import nutrisport.shared.generated.resources.error_unknown
 import nutrisport.shared.generated.resources.error_while_creating_customer
 import nutrisport.shared.generated.resources.error_while_creating_product
+import nutrisport.shared.generated.resources.error_while_deleting
 import nutrisport.shared.generated.resources.error_while_reading_customer_info
 import nutrisport.shared.generated.resources.error_while_signing_out
 import nutrisport.shared.generated.resources.error_while_updating_a_customer
@@ -46,12 +47,14 @@ import nutrisport.shared.generated.resources.price
 import nutrisport.shared.generated.resources.product
 import nutrisport.shared.generated.resources.product_content_image
 import nutrisport.shared.generated.resources.product_successfully_added
+import nutrisport.shared.generated.resources.product_thumbnail_image
 import nutrisport.shared.generated.resources.protein
 import nutrisport.shared.generated.resources.search_icon
 import nutrisport.shared.generated.resources.sign_in_cancelled
 import nutrisport.shared.generated.resources.sign_in_to_continue
 import nutrisport.shared.generated.resources.sign_in_to_google
 import nutrisport.shared.generated.resources.successful_update
+import nutrisport.shared.generated.resources.thumbnail_removed
 import nutrisport.shared.generated.resources.thumbnail_uploaded
 import nutrisport.shared.generated.resources.title
 import nutrisport.shared.generated.resources.try_again
@@ -87,6 +90,7 @@ object Strings {
     val errorWhileSelectingImage = Res.string.file_is_null_error_selecting_image
     val failedToRetrieveImageUrl = Res.string.failed_to_retrieve_image_url
     val errorWhileUploading = Res.string.error_while_uploading
+    val errorWhileDeletingThumbnail = Res.string.error_while_deleting
 
 
     val firstName = Res.string.first_name_db
@@ -113,6 +117,7 @@ object Strings {
     val product = Res.string.product
     val unknown = Res.string.unknown
     val update = Res.string.update
+    val productThumbnail = Res.string.product_thumbnail_image
 
     val myProfile = Res.string.my_profile
     val adminPanel = Res.string.admin_panel
@@ -132,5 +137,6 @@ object Strings {
     val tryAgain = Res.string.try_again
     val productContentImage = Res.string.product_content_image
     val thumbnailUploadedSuccessfully = Res.string.thumbnail_uploaded
+    val thumbnailRemovedSuccessfully = Res.string.thumbnail_removed
 
 }

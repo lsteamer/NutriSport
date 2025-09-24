@@ -28,6 +28,7 @@
     <string name="file_is_null_error_selecting_image">File is null. Error while selecting an image.</string>
     <string name="failed_to_retrieve_image_url">Failed to retrieve a download URL after the upload.</string>
     <string name="error_while_uploading">Error while uploading: </string>
+    <string name="error_while_deleting">Error while deleting a thumbnail: %1$s</string>
 
 
     <string name="my_profile">My Profile</string>
@@ -48,7 +49,7 @@
     <string name="info_card_image">Info Card Image</string>
     <string name="content_animation">ContentAnimation</string>
     <string name="plus_icon">Plus Icon</string>
-
+    <string name="product_thumbnail_image">Product thumbnail image</string>
 
 
     <string name="customer">customer</string>
@@ -105,5 +106,6 @@
     <string name="try_again">Try again</string>
     <string name="product_content_image">Product Content Image</string>
     <string name="thumbnail_uploaded">Thumbnail uploaded successfully</string>
+    <string name="thumbnail_removed">Thumbnail removed successfully</string>
 
 </resources>

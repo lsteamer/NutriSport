@@ -48,9 +48,41 @@ class AdminRepositoryImpl : AdminRepository {
                     imagePath.getDownloadUrl()
                 }
             } catch (e: Exception) {
-                println("Error uploading image: ${e.message}")
+                println(e.message)
                 null
             }
         } else null
+    }
+
+    override suspend fun deleteImageFromStorage(
+        downloadUrl: String,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        try {
+            val storagePath = extractFirebaseStoragePath(downloadUrl)
+            storagePath?.let { Firebase.storage.reference(it).delete() }
+        } catch (e: Exception) {
+            onError(getString(Strings.errorWhileDeletingThumbnail, e.message ?: ""))
+        }
+    }
+
+    private fun extractFirebaseStoragePath(downloadUrl: String): String? {
+        val startIndex = downloadUrl.indexOf("/o/") + 3
+        if (startIndex < 3) return null
+        val endIndex = downloadUrl.indexOf("?", startIndex)
+
+        val encodedPath = if (endIndex != -1) {
+            downloadUrl.substring(startIndex, endIndex)
+        } else {
+            downloadUrl.substring(startIndex)
+        }
+        return decodeFirebasePath(encodedPath)
+    }
+
+    private fun decodeFirebasePath(encodedPath: String): String {
+        return encodedPath
+            .replace("%2F", "/")
+            .replace("%20", " ")
     }
 }

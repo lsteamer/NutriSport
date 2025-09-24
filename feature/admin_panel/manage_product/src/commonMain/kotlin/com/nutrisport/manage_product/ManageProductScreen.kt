@@ -47,6 +47,7 @@ import coil3.request.crossfade
 import com.nutrisport.manage_product.util.PhotoPicker
 import com.nutrisport.shared.BebasNeueFont
 import com.nutrisport.shared.BorderIdle
+import com.nutrisport.shared.ButtonPrimary
 import com.nutrisport.shared.FontSize
 import com.nutrisport.shared.IconPrimary
 import com.nutrisport.shared.Resources
@@ -85,6 +86,7 @@ fun ManageProductScreen(
     val photoPicker = koinInject<PhotoPicker>()
 
     val thumbnailUploadedSuccessfully = stringResource(Strings.thumbnailUploadedSuccessfully)
+    val thumbnailRemovedSuccessfully = stringResource(Strings.thumbnailRemovedSuccessfully)
     val errorMessageFile = stringResource(Strings.errorWhileSelectingImage)
     val errorMessageUrl = stringResource(Strings.failedToRetrieveImageUrl)
     val errorWhileUploading = stringResource(Strings.errorWhileUploading)
@@ -236,16 +238,45 @@ fun ManageProductScreen(
                                 }
                             },
                             onSuccess = {
-                                AsyncImage(
-                                    modifier = Modifier.fillMaxSize(),
-                                    model = ImageRequest.Builder(
-                                        LocalPlatformContext.current
-                                    ).data(screenState.thumbnail)
-                                        .crossfade(enable = true)
-                                        .build(),
-                                    contentDescription = stringResource(Strings.productContentImage),
-                                    contentScale = ContentScale.Crop
-                                )
+                                Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.TopEnd) {
+                                    AsyncImage(
+                                        modifier = Modifier.fillMaxSize(),
+                                        model = ImageRequest.Builder(
+                                            LocalPlatformContext.current
+                                        ).data(screenState.thumbnail)
+                                            .crossfade(enable = true)
+                                            .build(),
+                                        contentDescription = stringResource(Strings.productContentImage),
+                                        contentScale = ContentScale.Crop
+                                    )
+                                    Box(
+                                        modifier = Modifier
+                                            .clip(RoundedCornerShape(size = 6.dp))
+                                            .padding(
+                                                top = 12.dp,
+                                                end = 12.dp
+                                            )
+                                            .background(ButtonPrimary)
+                                            .clickable{ viewModel.deleteThumbnailFromStorage(
+                                                onSuccess = {
+                                                    messageBarState
+                                                        .addSuccess(thumbnailRemovedSuccessfully)
+                                                },
+                                                onError = { message ->
+                                                    messageBarState
+                                                        .addError(message)
+                                                }
+                                            ) }
+                                            .padding(all = 12.dp),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            modifier = Modifier.size(14.dp),
+                                            painter = painterResource(Resources.Icon.Delete),
+                                            contentDescription = stringResource(Strings.productThumbnail),
+                                        )
+                                    }
+                                }
                             }
                         )
                     }
