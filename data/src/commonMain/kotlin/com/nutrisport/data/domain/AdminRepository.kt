@@ -10,6 +10,5 @@ interface AdminRepository {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     )
-
     suspend fun uploadImageToStorage(file: File): String?
 }

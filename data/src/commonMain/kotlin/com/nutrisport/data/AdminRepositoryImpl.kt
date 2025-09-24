@@ -37,7 +37,7 @@ class AdminRepositoryImpl : AdminRepository {
         }
     }
 
-    @ExperimentalUuidApi
+    @OptIn(ExperimentalUuidApi::class)
     override suspend fun uploadImageToStorage(file: File): String? {
         return if (getCurrentUserID() != null) {
             val storage = Firebase.storage.reference
@@ -48,6 +48,7 @@ class AdminRepositoryImpl : AdminRepository {
                     imagePath.getDownloadUrl()
                 }
             } catch (e: Exception) {
+                println("Error uploading image: ${e.message}")
                 null
             }
         } else null

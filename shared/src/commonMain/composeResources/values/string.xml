@@ -12,7 +12,7 @@
     <string name="error_unknown">Unknown error</string>
     <string name="error_network">Network error</string>
     <string name="error_internet">Internet connection unavailable</string>
-    <string name="id_token_null">ID token is null</string>
+    <string name="id_token_null">ID token is null, you might be offline</string>
     <string name="sign_in_cancelled">Sign in cancelled</string>
     <string name="user_not_available">User not available</string>
     <string name="error_while_creating_customer">Error while creating a customer: %1$s</string>
